@@ -1,15 +1,20 @@
-const Navbar = () => {
-    return (
-      <header className="fixed top-0 left-[280px] right-0 h-[72px] bg-white shadow-md flex items-center px-6">
-        <input type="text" placeholder="Search..." className="w-1/3 p-2 border rounded-md" />
-        <div className="ml-auto flex space-x-4">
-          <span className="text-gray-600 cursor-pointer">🔔</span>
-          <span className="text-gray-600 cursor-pointer">⚙️</span>
-          <span className="text-gray-600 cursor-pointer">👤</span>
-        </div>
-      </header>
-    );
-  };
-  
-  export default Navbar;
-  
+import React from "react";
+import { FaSearch } from "react-icons/fa";
+
+const Navbar: React.FC = () => {
+  return (
+    <div className="flex items-center text-black p-4 space-x-2">
+      <div className="flex items-center  rounded-md p-2 w-[1900px]">
+        <FaSearch className="text-gray-500 mr-6" /> 
+        <input
+          type="text"
+          placeholder="Search [CTRL + K]"
+          className="flex-grow h-[56px] outline-none"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
+

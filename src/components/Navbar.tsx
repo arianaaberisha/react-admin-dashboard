@@ -3,8 +3,9 @@ import { FaSearch } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
   return (
-    <div className="flex items-center text-black p-4 space-x-2">
-      <div className="flex items-center  rounded-md p-2 w-[1900px]">
+    
+    <div className="flex items-center text-black p-4 space-x-2 ">
+      <div className="flex items-center  rounded-md p-2 ">
         <FaSearch className="text-gray-500 mr-6" /> 
         <input
           type="text"

@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-const GeneralCard: React.FC = () => {
-  return (
-    <div className='w-full bg-white shadow-lg rounded p-4 h-[300px]'></div>
-  )
+interface GeneralCardProps {
+  children?: React.ReactNode;
 }
 
-export default GeneralCard
+const GeneralCard: React.FC<GeneralCardProps> = ({ children }) => {
+  return (
+    <div className="w-full shadow-lg rounded-lg p-6 h-[300px] md:h-[300px] lg:h-[350px] overflow-hidden">
+      {children}
+    </div>
+  );
+};
+
+export default GeneralCard;

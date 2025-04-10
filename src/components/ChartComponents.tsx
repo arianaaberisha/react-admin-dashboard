@@ -5,7 +5,7 @@ import type { ApexOptions } from "apexcharts";
 type ChartComponentsProps={
   type: ApexChart["type"];
   options:ApexOptions;
-  series:ApexAxisChartSeries;
+  series: ApexOptions["series"];
   height?: number;
   width?: number;
   title: string;

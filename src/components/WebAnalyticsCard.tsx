@@ -6,42 +6,43 @@ import CardAnalytics3 from "../assets/icons/card-website-analytics-3.png";
 
 export const ViewOne = () => (
   <div className="relative">
-    <div className="p-2 flex justify-between items-center">
+    <div className="p-6 flex justify-between items-center">
       <div>
-        <h2 className="text-2xl text-white font-sans font-[500]">
+        <h2 className="text-2xl text-white font-[500] font-publicSans">
           Website Analytics
         </h2>
-        <p className="text-xl text-white font-sans font-[400]">
+        <p className="text-xl text-white font-[400] font-publicSans">
           Total 28.5% Conversion Rate
         </p>
       </div>
     </div>
-    <div className="p-2">
-      <p className="text-xl text-white font-sans font-[400]">Traffic</p>
+    <div className="p-6">
+      <p className="text-xl text-white font-publicSans font-[400]">Traffic</p>
       <br />
-      <p className="text-white flex gap-4">
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">28%</span>
-          Sessions
-        </span>
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">3.1k</span>
-          Page Views
-        </span>
-      </p>
-      <br />
-      <p className="text-white flex gap-9">
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">1.2k</span>
-          Leads
-        </span>
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">12%</span>
-          Conversions
-        </span>
-      </p>
+      <div className="flex flex-col gap-4 text-white ">
+        <div className="flex gap-4 ">
+          <span className="flex items-center gap-2 font-publicSans">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md ">28%</span>
+            Sessions
+          </span>
+          <span className="flex items-center gap-2 font-publicSans">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md">3.1k</span>
+            Page Views
+          </span>
+        </div>
+        <div className="flex gap-9">
+          <span className="flex items-center gap-2 font-publicSans">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md">1.2k</span>
+            Leads
+          </span>
+          <span className="flex items-center gap-2 font-publicSans">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md">12%</span>
+            Conversions
+          </span>
+        </div>
+      </div>
     </div>
-    <div className="absolute bottom-10 right-12">
+    <div className="absolute top-[30%] right-[15%]">
       <img src={CardAnalytics1} alt="Icon image" width={200} height={150} />
     </div>
   </div>
@@ -49,36 +50,39 @@ export const ViewOne = () => (
 
 export const ViewTwo = () => (
   <div className="relative">
-    <div className="p-2">
-      <h2 className="text-2xl text-white font-sans font-[500]">Website Analytics</h2>
+    <div className="p-6">
+      <h2 className="text-2xl text-white font-sans font-[500]">
+        Website Analytics
+      </h2>
       <p className="text-xl text-white">Total 28.5% Conversion Rate</p>
     </div>
-    <div className="p-2">
+    <div className="p-6">
       <p className="text-xl text-white font-sans font-[400]">Spending</p>
       <br />
-      <p className="text-white flex gap-8">
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">12h</span>
-          Spend
-        </span>
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">18</span>
-          Order Size
-        </span>
-      </p>
-      <br />
-      <p className="text-white flex gap-9">
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">127</span>
-          Order
-        </span>
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">2.3k</span>
-          Items
-        </span>
-      </p>
+      <div className="flex flex-col gap-4 text-white">
+        <div className="flex gap-8">
+          <span className="flex items-center gap-2">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md">12h</span>
+            Spend
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md">18</span>
+            Order Size
+          </span>
+        </div>
+        <div className="flex gap-9">
+          <span className="flex items-center gap-2">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md">127</span>
+            Order
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md">2.3k</span>
+            Items
+          </span>
+        </div>
+      </div>
     </div>
-    <div className="absolute bottom-10 right-12">
+    <div className="absolute top-[30%] right-[15%]">
       <img src={CardAnalytics2} alt="Icon2 image" width={200} height={150} />
     </div>
   </div>
@@ -86,36 +90,39 @@ export const ViewTwo = () => (
 
 export const ViewThree = () => (
   <div className="relative">
-    <div className="p-2">
-      <h2 className="text-2xl text-white font-sans font-[500]">Website Analytics</h2>
+    <div className="p-6">
+      <h2 className="text-2xl text-white font-sans font-[500]">
+        Website Analytics
+      </h2>
       <p className="text-xl text-white">Total 28.5% Conversion Rate</p>
     </div>
-    <div className="p-2">
+    <div className="p-6">
       <p className="text-xl text-white font-sans font-[400]">Revenue Sources</p>
       <br />
-      <p className="text-white flex gap-8">
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">268</span>
-          Direct
-        </span>
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">890</span>
-          Organic
-        </span>
-      </p>
-      <br />
-      <p className="text-white flex gap-7">
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">62</span>
-          Referral
-        </span>
-        <span className="flex items-center gap-2">
-          <span className="bg-violet-800 p-2 rounded-md shadow-md">1.2k</span>
-          Campaign
-        </span>
-      </p>
+      <div className="flex flex-col gap-4 text-white">
+        <div className="flex gap-8">
+          <span className="flex items-center gap-2">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md">268</span>
+            Direct
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md">890</span>
+            Organic
+          </span>
+        </div>
+        <div className="flex gap-7">
+          <span className="flex items-center gap-2">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md">62</span>
+            Referral
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="bg-[#6258CC] p-2 rounded-md shadow-md">1.2k</span>
+            Campaign
+          </span>
+        </div>
+      </div>
     </div>
-    <div className="absolute bottom-10 right-12">
+    <div className="absolute top-[30%] right-[15%]">
       <img src={CardAnalytics3} alt="Icon3 image" width={200} height={150} />
     </div>
   </div>
@@ -129,24 +136,26 @@ const WebAnalyticsCard: React.FC<WebAnalyticsCardProps> = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-        setDirection(1);
+      setDirection(1);
       setActiveView((prev) => (prev + 1) % 3);
     }, 5000);
-
     return () => clearTimeout(timer);
   }, [activeView]);
+
   const changeView = (newView: number) => {
     setDirection(newView > activeView ? 1 : -1);
     setActiveView(newView);
   };
 
   const renderDots = () => (
-    <div className="flex gap-2 absolute top-0 right-0">
+    <div className="flex gap-2 absolute top-0 right-0 z-10 p-6">
       {[0, 1, 2].map((i) => (
         <span
-          
           key={i}
-          onClick={() => changeView(i)}
+          onClick={() => {
+            console.log("Clicked dot:", i);
+            changeView(i);
+          }}
           className={`w-2 h-2 rounded-full cursor-pointer ${
             activeView === i ? "bg-white" : "bg-white opacity-50"
           }`}
@@ -169,7 +178,7 @@ const WebAnalyticsCard: React.FC<WebAnalyticsCardProps> = () => {
   };
 
   return (
-    <div className="relative overflow-hidden ">
+    <div className="relative overflow-hidden z-0">
       {renderDots()}
       <Motion
         key={activeView}
@@ -180,6 +189,7 @@ const WebAnalyticsCard: React.FC<WebAnalyticsCardProps> = () => {
           <div
             style={{
               transform: `translateX(${x}%)`,
+              transition: "transform 0.2s ease",
             }}
           >
             {renderViewContent()}

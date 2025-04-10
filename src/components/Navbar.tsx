@@ -17,14 +17,13 @@ const Navbar: React.FC = () => {
           className="flex-grow h-[56px] outline-none"
         />
       </div>
-      <div className="flex items-center pl-[1000px] space-x-6">
+      <div className="flex items-center pl-[1000px] gap-3">
         <img src={Language} className="w-6 h-6 cursor-pointer" />
         <img src={Computer} className="w-6 h-6 cursor-pointer" />
         <img src={Grid} className="w-6 h-6 cursor-pointer" />
         <img src={Bell} className="w-6 h-6 cursor-pointer" />
         <div className="w-9 h-9 rounded-full bg-gray-300 cursor-pointer" />
       </div>
-      
     </div>
   );
 };

@@ -57,15 +57,15 @@ const SupportTracker: React.FC = () => {
     return(
         <div className="p-4 flex flex-col lg:flex-row items-center justify-between gap-6">
         <div className="flex-1">
-          <div className="mb-2 font-publicSans">
+          <div className="mb-2 font-medium">
             <h2 className="text-lg  text-[#2F2B3DE5] ">Support Tracker</h2>
             <p className="text-md text-gray-500">Last 7 Days</p>
           </div>
           <div className="mb-3">
-            <p className="text-4xl font-[500] text-[#2F2B3DE5] font-publicSans">164</p>
+            <p className="text-4xl font-[500] text-[#2F2B3DE5]">164</p>
             <p className="text-xs text-gray-400">Total Tickets</p>
           </div>
-          <div className="flex flex-col space-y-4 font-publicSans">
+          <div className="flex flex-col space-y-4 ">
             <div className="flex items-center">
               <img
                 src={Ticket}

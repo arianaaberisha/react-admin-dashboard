@@ -4,7 +4,7 @@ module.exports = {
     theme: {
       extend: {
         fontFamily: {
-        publicSans: ['Public Sans', 'sans-serif'],
+        publicSans: ['Public Sans'],
       },},
     },
     plugins: [],

@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
-    <div className="relative w-screen h-screen overflow-x-hidden  bg-gray-100 ">
+    <div className="relative w-screen h-screen overflow-x-hidden bg-gray-50">
       <aside className="fixed top-0 left-0 w-64 h-full border-r border-white bg-white shadow-md ">
         <Menu />
       </aside>

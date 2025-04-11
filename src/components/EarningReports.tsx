@@ -57,7 +57,7 @@ const EarningReports: React.FC = () => {
 
   return (
     <div>
-      <div className="p-4 font-publicSans">
+      <div className="p-4 font-medium">
         <h2 className="text-lg font-[500] text-[#2F2B3DE5]">Earning Reports</h2>
         <p className="text-md text-gray-500">Weekly Earnings Overview</p>
       </div>
@@ -65,13 +65,13 @@ const EarningReports: React.FC = () => {
 
       <div className="relative w-full p-2 flex justify-between items-start">
   <div className="flex flex-col space-y-2">
-    <div className="flex justify-start items-center gap-3 font-publicSans">
+    <div className="flex justify-start items-center gap-3">
       <div className="text-3xl text-gray-800 text-md">$468</div>
       <div className="text-green-500 text-md font-semibold bg-green-200 rounded-md shadow-md">
         +4.2%
       </div>
     </div>
-    <p className="text-sm text-gray-500 font-publicSans">
+    <p className="text-sm text-gray-500">
       You informed of this week compared <br></br> to last week
     </p>
   </div>
@@ -87,7 +87,7 @@ const EarningReports: React.FC = () => {
   </div>
 </div>
 
-      <div className="flex justify-between items-center p-4 mt-4 shadow-md font-publicSans border border-gray-200 rounded-xl">
+      <div className="flex justify-between items-center p-4 mt-4 shadow-md border border-gray-200 rounded-xl">
         <div className="text-center">
           <div className="flex items-center justify-center space-x-2 ">
             <img

@@ -7,6 +7,8 @@ import SupportTracker from "./SupportTracker";
 import MonthlyState from "./MonthlyState";
 import SalesByCountries from "./SalesByCountries";
 import TotalEarning from "./TotalEarning";
+import SourceVisits from "./SourceVisits";
+import ProjectList from "./ProjectList"
 
 
 
@@ -57,11 +59,11 @@ const Body: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-12 gap-4">
-        <div className="xl:col-span-6 lg:col-span-6 md:col-span-12">
-          <GeneralCard className="h-[300px]"></GeneralCard>
+        <div className="xl:col-span-4 lg:col-span-4 md:col-span-12">
+          <GeneralCard className="h-[550px]"><SourceVisits /></GeneralCard>
         </div>
-        <div className="xl:col-span-6 lg:col-span-6 md:col-span-12">
-          <GeneralCard className="h-[300px]"></GeneralCard>
+        <div className="xl:col-span-8 lg:col-span-8 md:col-span-12">
+          <GeneralCard className="h-[550px]"><ProjectList /></GeneralCard>
         </div>
       </div>
     </div>

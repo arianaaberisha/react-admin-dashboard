@@ -8,34 +8,34 @@ export const ViewOne = () => (
   <div className="relative">
     <div className="p-6 flex justify-between items-center">
       <div>
-        <h2 className="text-2xl text-white font-[500] font-publicSans">
+        <h2 className="text-2xl text-white font-medium">
           Website Analytics
         </h2>
-        <p className="text-xl text-white font-[400] font-publicSans">
+        <p className="text-xl text-white font-[400] ">
           Total 28.5% Conversion Rate
         </p>
       </div>
     </div>
     <div className="p-6">
-      <p className="text-xl text-white font-publicSans font-[400]">Traffic</p>
+      <p className="text-xl text-white">Traffic</p>
       <br />
       <div className="flex flex-col gap-4 text-white ">
         <div className="flex gap-4 ">
-          <span className="flex items-center gap-2 font-publicSans">
+          <span className="flex items-center gap-2">
             <span className="bg-[#6258CC] p-2 rounded-md shadow-md ">28%</span>
             Sessions
           </span>
-          <span className="flex items-center gap-2 font-publicSans">
+          <span className="flex items-center gap-2">
             <span className="bg-[#6258CC] p-2 rounded-md shadow-md">3.1k</span>
             Page Views
           </span>
         </div>
         <div className="flex gap-9">
-          <span className="flex items-center gap-2 font-publicSans">
+          <span className="flex items-center gap-2">
             <span className="bg-[#6258CC] p-2 rounded-md shadow-md">1.2k</span>
             Leads
           </span>
-          <span className="flex items-center gap-2 font-publicSans">
+          <span className="flex items-center gap-2">
             <span className="bg-[#6258CC] p-2 rounded-md shadow-md">12%</span>
             Conversions
           </span>

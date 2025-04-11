@@ -12,12 +12,12 @@ import ChevronUp from "../assets/icons/ChevronUp.svg"
 const SalesByCountries: React.FC = () => {
     return (
       <div className="">
-        <div className="p-2 font-publicSans">
+        <div className="p-2 font-medium">
           <h2 className="text-lg font-[500] text-[#2F2B3DE5]">Sales by Countries</h2>
           <p className="text-md text-gray-500">Monthly Sales Overview</p>
         </div>
         
-        <div className="flex flex-col p-2 ">
+        <div className="flex flex-col p-1  ">
           {/* United States */}
           <div className="flex items-center justify-between py-2">
             <div className="flex items-center">
@@ -34,7 +34,7 @@ const SalesByCountries: React.FC = () => {
           </div>
   
           {/* Brazili */}
-          <div className="flex items-center justify-between py-3">
+          <div className="flex items-center justify-between py-2">
             <div className="flex items-center">
               <img src={Brazil} alt="Brazil" className="w-10 h-10 mr-3" />
               <div className="flex flex-col">
@@ -49,7 +49,7 @@ const SalesByCountries: React.FC = () => {
           </div>
   
           {/* India */}
-          <div className="flex items-center justify-between py-3">
+          <div className="flex items-center justify-between py-2">
             <div className="flex items-center">
               <img src={India} alt="India" className="w-10 h-10 mr-3" />
               <div className="flex flex-col">
@@ -64,7 +64,7 @@ const SalesByCountries: React.FC = () => {
           </div>
   
           {/* Australia */}
-          <div className="flex items-center justify-between py-3">
+          <div className="flex items-center justify-between py-2">
             <div className="flex items-center">
               <img src={Australia} alt="Australia" className="w-10 h-10 mr-3" />
               <div className="flex flex-col">
@@ -80,7 +80,7 @@ const SalesByCountries: React.FC = () => {
           </div>
   
           {/* Franca */}
-          <div className="flex items-center justify-between py-3">
+          <div className="flex items-center justify-between py-2">
             <div className="flex items-center">
               <img src={France} alt="France" className="w-10 h-10 mr-3" />
               <div className="flex flex-col">
@@ -94,7 +94,7 @@ const SalesByCountries: React.FC = () => {
           </div>
   </div>
           {/* Kina */}
-          <div className="flex items-center justify-between py-3">
+          <div className="flex items-center justify-between py-2">
             <div className="flex items-center">
               <img src={China} alt="China" className="w-10 h-10 mr-3" />
               <div className="flex flex-col">
@@ -103,7 +103,7 @@ const SalesByCountries: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center gap-2">
-            <img src={ChevronUp}  />
+            <img src={ChevronUp} />
             <div className="text-green-500 text-md font-semibold">14.8%</div>
           </div>
           </div>

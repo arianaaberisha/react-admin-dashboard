@@ -4,14 +4,14 @@ import ShoppingCart2 from "../assets/icons/ShoppingCart2.svg"
 const SalesOverview: React.FC = () => {
     return (
 <div className="p-2">
-      <div className="flex justify-between items-center mb-2 font-publicSans">
+      <div className="flex justify-between items-center mb-2 ">
         <div className="text-gray-500 text-md">Sales Overview</div>
         
         <div className="text-green-500 text-md font-semibold ">+18.2%</div>
       </div>
 
-      <div className="text-3xl font-semibold text-gray-800 mb-16 font-publicSans">$42.5k</div>
-      <div className="flex justify-center items-center space-x-4 font-publicSans">
+      <div className="text-3xl font-semibold text-gray-800 mb-16 ">$42.5k</div>
+      <div className="flex justify-center items-center space-x-4 ">
    
         <div className="flex flex-col items-center w-20 ">
           <img src={ShoppingCart2} className="w-6 h-18 mb-2" />

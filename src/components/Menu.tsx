@@ -53,35 +53,37 @@ const DropdownList: React.FC<DropdownListProps> = ({
   badge,
 }) => (
   <li>
-    <button
-      onClick={toggle}
-      className="flex items-center justify-between w-full text-gray-700 hover:text-violet-800 focus:outline-none px-4 py-2"
-    >
-      <div className="flex items-center space-x-2">
-        <img src={icon} alt={`${label} Icon`} className="w-5 h-5" />
-        <span className="font-medium text-sm">{label}</span>
-        {badge && (
-          <span className="text-xs text-white bg-violet-500 px-2 py-0.5 rounded-full">
-            {badge}
-          </span>
-        )}
-      </div>
-      <img
-        src={isOpen ? ChevronDown : ChevronRight}
-        alt="Chevron"
-        className="w-5 h-5"
-      />
-    </button>
+    {label && (
+      <button
+        onClick={toggle}
+        className="flex items-center justify-between w-full text-gray-700 hover:text-violet-800 focus:outline-none px-4 py-2"
+      >
+        <div className="flex items-center space-x-2">
+          <img src={icon} alt={`${label} Icon`} className="w-5 h-5" />
+          <span className="text-sm font-medium">{label}</span>
+          {badge && (
+            <span className="text-xs text-white bg-violet-500 px-2 py-0.5 rounded-full">
+              {badge}
+            </span>
+          )}
+        </div>
+        <img
+          src={isOpen ? ChevronDown : ChevronRight}
+          alt="Chevron"
+          className="w-5 h-5"
+        />
+      </button>
+    )}
     <Motion
       style={{
-        height: spring(isOpen ? items.length * 32 : 0),
-        opacity: spring(isOpen ? 1 : 0),
+        height: spring(isOpen ? items.length * 32 : 0, { stiffness: 150, damping: 10 }),
+        opacity: spring(isOpen ? 1 : 0, { stiffness: 150, damping: 10 }),
       }}
     >
       {({ height, opacity }: { height: number; opacity: number }) => (
         <ul
           style={{ height, opacity, overflow: "hidden" }}
-          className="list-disc ml-8 mt-2 space-y-1"
+          className="list-disc ml-8 mt-2 space-y-1 transition-all duration-150"
         >
           {items.map((item, index) => (
             <li
@@ -97,453 +99,195 @@ const DropdownList: React.FC<DropdownListProps> = ({
   </li>
 );
 
-const Menu: React.FC = () => {
+interface MenuProps {
+  isCollapsed: boolean;
+  onToggleCollapse: (collapsed: boolean) => void;
+  showExpandButton?: boolean;
+}
+
+interface MenuItem {
+  icon: string;
+  label: string;
+  badge?: number;
+  items?: string[];
+}
+
+const Menu: React.FC<MenuProps> = ({ isCollapsed, onToggleCollapse, showExpandButton }) => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [menuPinned, setMenuPinned] = useState(false);
+
+  const effectiveCollapsed = isCollapsed && !menuPinned;
 
   const handleToggle = (dropdownName: string) => {
-    setOpenDropdown(prev => (prev === dropdownName ? null : dropdownName));
+    if (!effectiveCollapsed) {
+      setOpenDropdown(prev => (prev === dropdownName ? null : dropdownName));
+    }
   };
 
+  const handleToggleButtonClick = () => {
+    if (!menuPinned) {
+      setMenuPinned(true);
+      onToggleCollapse(false);
+    } else {
+      setMenuPinned(false);
+      onToggleCollapse(true); 
+    }
+  };
+
+  const menuItems: MenuItem[] = [
+    { icon: Home, label: "Dashboards", badge: 5, items: ["Analytics", "CRM", "eCommerce", "Logistics", "Academy"] },
+    { icon: Layout, label: "Layouts", items: ["Collapsed menu", "Content navbar", "Content nav + Sidebar", "Horizontal", "Without menu", "Without navbar", "Fluid", "Container", "Blank"] },
+    { icon: Layers, label: "Front Pages", items: ["Landing", "Pricing", "Payment", "Checkout", "Help Center"] },
+    { icon: Email, label: "Email" },
+    { icon: Chat, label: "Chat" },
+    { icon: Calendar, label: "Calendar" },
+    { icon: Kanban, label: "Kanban" },
+    { icon: ShoppingCart, label: "eCommerce", items: ["Dashboard", "Products", "Order", "Customer", "Manage Reviews", "Referrals", "Settings"] },
+    { icon: Book, label: "Academy", items: ["Dashboard", "My Course", "Course Details"] },
+    { icon: Truck, label: "Logistics", items: ["Dashboard", "Fleet"] },
+    { icon: Dollar, label: "Invoice", items: ["List", "Preview", "Edit", "Add"] },
+    { icon: Users, label: "Users", items: ["List", "View"] },
+    { icon: Settings, label: "Roles & Permissions", items: ["Roles", "Permissions"] },
+    { icon: File, label: "Pages", items: ["User Profile", "Account Settings", "FAQ", "Pricing", "Misc"] },
+    { icon: Lock, label: "Authentication", items: ["Login", "Register", "Verify Email", "Reset Password", "Forgot Password"] },
+    { icon: Dots, label: "Wizard Examples", items: ["Checkout", "Property Listing", "Create Deal"] },
+    { icon: Square, label: "Modal Examples" },
+    { icon: Cards, label: "Cards", badge: 5, items: ["Basic", "Advanced", "Statistics", "Analytics", "Actions"] },
+    { icon: Interface, label: "User Interface", items: ["Accordion", "Alerts", "Badges", "Buttons", "Carousel"] },
+    { icon: UI, label: "Extended UI", items: ["Avatar", "BlockUI", "Drag & Drop", "Media Player", "Perfect Scrollbar"] },
+    { icon: Tabler, label: "Icons", items: ["Tabler", "Font Awesome"] },
+    { icon: Toggle, label: "Form Elements", items: ["Basic Inputs", "Input Groups", "Custom Options", "Editors"] },
+    { icon: FormLayout, label: "Form Layouts", items: ["Vertical Form", "Horizontal Form", "Sticky Actions"] },
+    { icon: Arrows, label: "Form Wizard", items: ["Numbered", "Icons"] },
+    { icon: Form, label: "Form Validation" },
+    { icon: Table, label: "Tables" },
+    { icon: DataTables, label: "Datatables", items: ["Basic", "Advanced", "Extensions"] },
+    { icon: Charts, label: "Charts", items: ["Apex Charts", "ChartJS"] },
+    { icon: Map, label: "Leaflet Maps" },
+    { icon: Level, label: "Multi Level", items: ["Level 2.1", "Level 2.2"] },
+    { icon: Lifebuoy, label: "Support" },
+    { icon: Document, label: "Documentation" }
+  ];
+
+  const sections = [
+    { title: "APPS & PAGE", startIndex: 3, endIndex: 16 },
+    { title: "COMPONENTS", startIndex: 17, endIndex: 21 },
+    { title: "FORMS & TABLES", startIndex: 22, endIndex: 27 },
+    { title: "CHARTS & MAPS", startIndex: 28, endIndex: 29 },
+    { title: "MISC", startIndex: 30, endIndex: 32 }
+  ];
+
   return (
-    <div className="w-64 h-screen bg-white flex flex-col border-r transition-all duration-300">
-      <div className="flex items-center justify-between px-8 py-3 border-b">
-        <div className="flex items-center space-x-">
-          <h1 className="text-xl font-bold text-violet-800">
-            <svg
-              width="32"
-              height="22"
-              viewBox="0 0 32 22"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z"
-                fill="currentColor"
-              />
-              <path
-                opacity="0.06"
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M7.69824 16.4364L12.5199 3.23696L16.5541 7.25596L7.69824 16.4364Z"
-                fill="#161616"
-              />
-              <path
-                opacity="0.06"
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M8.07751 15.9175L13.9419 4.63989L16.5849 7.28475L8.07751 15.9175Z"
-                fill="#161616"
-              />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
-                fill="currentColor"
-              />
-            </svg>
-            Vuexy
-          </h1>
+    <div className="h-screen bg-white flex flex-col transition-all duration-150">
+      <div className={`flex items-center h-16 px-4 border-b ${effectiveCollapsed ? "justify-center" : "justify-between"} transition-all duration-150`}>
+        <div className="flex items-center">
+          <svg
+            width="32"
+            height="22"
+            viewBox="0 0 32 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={effectiveCollapsed ? "mx-auto" : "mr-2"}
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z"
+              fill="#7367F0"
+            />
+            <path
+              opacity="0.06"
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M7.69824 16.4364L12.5199 3.23696L16.5541 7.25596L7.69824 16.4364Z"
+              fill="#161616"
+            />
+            <path
+              opacity="0.06"
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M8.07751 15.9175L13.9419 4.63989L16.5849 7.28475L8.07751 15.9175Z"
+              fill="#161616"
+            />
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
+              fill="#7367F0"
+            />
+          </svg>
+          {!effectiveCollapsed && <span className="text-xl font-bold text-gray-800">Vuexy</span>}
         </div>
+        {(!effectiveCollapsed || showExpandButton) && (
+          <button
+            onClick={handleToggleButtonClick}
+            className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-150"
+            title={effectiveCollapsed ? "Pin menu open" : "Collapse menu"}
+          >
+            <div className="w-6 h-6 rounded-full border-2 border-gray-700 flex items-center justify-center">
+              <div className="w-2 h-2 rounded-full bg-gray-700"></div>
+            </div>
+          </button>
+        )}
       </div>
-      <div className="flex-1 overflow-y-auto px-2 py-4">
-        <ul className="space-y-2">
-          <li>
-            <button
-              onClick={() => handleToggle("dashboard")}
-              className="flex items-center justify-between w-full text-gray-700 hover:text-violet-800 focus:outline-none"
-            >
-              <div className="flex items-center space-x-2">
-                <img src={Home} alt="Home Icon" className="w-5 h-5" />
-                <span className="font-medium text-sm">Dashboards</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-xs text-white bg-red-500 px-2 py-0.5 rounded-full">
-                  5
-                </span>
-                <img
-                  src={openDropdown === "dashboard" ? ChevronDown : ChevronRight}
-                  alt="Chevron"
-                  className="w-5 h-5"
-                />
-              </div>
-            </button>
-            <Motion
-              style={{
-                height: spring(openDropdown === "dashboard" ? 5 * 32 : 0),
-                opacity: spring(openDropdown === "dashboard" ? 1 : 0),
-              }}
-            >
-              {({ height, opacity }: { height: number; opacity: number }) => (
-                <ul
-                  style={{ height, opacity, overflow: "hidden" }}
-                  className="list-disc ml-8 mt-2 space-y-1"
-                >
-                  {["Analytics", "CRM", "eCommerce", "Logistics", "Academy"].map(
-                    (item, index) => (
-                      <li
-                        key={index}
-                        className="text-sm text-gray-600 hover:text-violet-800 cursor-pointer"
-                      >
-                        {item}
-                      </li>
-                    )
+
+      <div className="flex-1 overflow-y-auto transition-all duration-150">
+        <ul className="py-4 px-2 space-y-1">
+          {menuItems.map((item, index) => {
+            const section = sections.find((s) => s.startIndex === index);
+            return (
+              <React.Fragment key={index}>
+                {section && (
+                  <li className={`mt-4 mb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider ${effectiveCollapsed ? "text-center" : ""}`}>
+                    {!effectiveCollapsed && section.title}
+                  </li>
+                )}
+                <li>
+                  <button
+                    onClick={() => handleToggle(item.label)}
+                    className={`w-full flex items-center px-3 py-2 rounded-lg hover:bg-violet-50 transition-colors duration-150 ${
+                      effectiveCollapsed ? "justify-center" : "justify-between"
+                    }`}
+                  >
+                    <div className={`flex items-center ${effectiveCollapsed ? "justify-center" : ""}`}>
+                      <div className="w-9 h-9 flex items-center justify-center">
+                        <img src={item.icon} alt={item.label} className="w-5 h-5" />
+                      </div>
+                      {!effectiveCollapsed && (
+                        <span className="text-sm font-medium text-gray-700">{item.label}</span>
+                      )}
+                    </div>
+                    {!effectiveCollapsed && (item.badge || item.items) && (
+                      <div className="flex items-center space-x-2">
+                        {item.badge && (
+                          <span className="text-xs text-white bg-violet-500 px-2 py-0.5 rounded-full">
+                            {item.badge}
+                          </span>
+                        )}
+                        {item.items && (
+                          <img
+                            src={openDropdown === item.label ? ChevronDown : ChevronRight}
+                            alt="toggle"
+                            className="w-4 h-4"
+                          />
+                        )}
+                      </div>
+                    )}
+                  </button>
+                  {item.items && openDropdown === item.label && (
+                    <DropdownList
+                      icon={item.icon}
+                      label={""}  
+                      isOpen={true}
+                      toggle={() => handleToggle(item.label)}
+                      items={item.items}
+                      badge={item.badge}
+                    />
                   )}
-                </ul>
-              )}
-            </Motion>
-          </li>
-
-          <li>
-            <button
-              onClick={() => handleToggle("layout")}
-              className="flex items-center justify-between w-full text-gray-700 hover:text-violet-800 focus:outline-none"
-            >
-              <div className="flex items-center space-x-2">
-                <img src={Layout} alt="Layout Icon" className="w-5 h-5" />
-                <span className="font-medium text-sm">Layouts</span>
-              </div>
-              <img
-                src={openDropdown === "layout" ? ChevronDown : ChevronRight}
-                alt="Chevron"
-                className="w-5 h-5"
-              />
-            </button>
-            <Motion
-              style={{
-                height: spring(openDropdown === "layout" ? 9 * 32 : 0),
-                opacity: spring(openDropdown === "layout" ? 1 : 0),
-              }}
-            >
-              {({ height, opacity }: { height: number; opacity: number }) => (
-                <ul
-                  style={{ height, opacity, overflow: "hidden" }}
-                  className="list-disc ml-8 mt-2 space-y-1"
-                >
-                  {[
-                    "Collapsed menu",
-                    "Content navbar",
-                    "Content nav+Sidebar",
-                    "Horizontal",
-                    "Without menu",
-                    "Without navbar",
-                    "Fluid",
-                    "Container",
-                    "Blank",
-                  ].map((item, index) => (
-                    <li
-                      key={index}
-                      className="text-sm text-gray-600 hover:text-violet-800 cursor-pointer"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </Motion>
-          </li>
-
-          <li>
-            <button
-              onClick={() => handleToggle("frontpage")}
-              className="flex items-center justify-between w-full text-gray-700 hover:text-violet-800 focus:outline-none"
-            >
-              <div className="flex items-center space-x-2">
-                <img src={Layers} alt="Layers Icon" className="w-5 h-5" />
-                <span className="font-medium text-sm">Front Pages</span>
-              </div>
-              <img
-                src={openDropdown === "frontpage" ? ChevronDown : ChevronRight}
-                alt="Chevron"
-                className="w-5 h-5"
-              />
-            </button>
-            <Motion
-              style={{
-                height: spring(openDropdown === "frontpage" ? 5 * 32 : 0),
-                opacity: spring(openDropdown === "frontpage" ? 1 : 0),
-              }}
-            >
-              {({ height, opacity }: { height: number; opacity: number }) => (
-                <ul
-                  style={{ height, opacity, overflow: "hidden" }}
-                  className="list-disc ml-8 mt-2 space-y-1"
-                >
-                  {["Landing", "Pricing", "Payment", "Checkout", "Help Center"].map(
-                    (item, index) => (
-                      <li
-                        key={index}
-                        className="text-sm text-gray-600 hover:text-violet-800 cursor-pointer"
-                      >
-                        {item}
-                      </li>
-                    )
-                  )}
-                </ul>
-              )}
-            </Motion>
-          </li>
-
-          <li className="mt-4 mb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-            Apps & Pages
-          </li>
-
-          {[
-            { icon: Email, label: "Email" },
-            { icon: Chat, label: "Chat" },
-            { icon: Calendar, label: "Calendar" },
-            { icon: Kanban, label: "Kanban" },
-          ].map(({ icon, label }, index) => (
-            <li
-              key={index}
-              className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-violet-800 cursor-pointer rounded-md transition-all"
-            >
-              <img src={icon} alt={`${label} Icon`} className="w-5 h-5" />
-              <span>{label}</span>
-            </li>
-          ))}
-
-          <DropdownList
-            icon={ShoppingCart}
-            label="eCommerce"
-            isOpen={openDropdown === "ecommerce"}
-            toggle={() => handleToggle("ecommerce")}
-            items={[
-              "Dashboard",
-              "Products",
-              "Order",
-              "Customer",
-              "Manage Reviews",
-              "Referrals",
-              "Settings",
-            ]}
-          />
-          <DropdownList
-            icon={Book}
-            label="Academy"
-            isOpen={openDropdown === "academy"}
-            toggle={() => handleToggle("academy")}
-            items={["Dashboard", "My Course", "Course Details"]}
-          />
-          <DropdownList
-            icon={Truck}
-            label="Logistics"
-            isOpen={openDropdown === "logistics"}
-            toggle={() => handleToggle("logistics")}
-            items={["Dashboard", "Fleet"]}
-          />
-          <DropdownList
-            icon={Dollar}
-            label="Invoice"
-            isOpen={openDropdown === "invoice"}
-            toggle={() => handleToggle("invoice")}
-            items={["List", "Preview", "Edit", "Add"]}
-          />
-          <DropdownList
-            icon={Users}
-            label="Users"
-            isOpen={openDropdown === "users"}
-            toggle={() => handleToggle("users")}
-            items={["List", "View"]}
-          />
-          <DropdownList
-            icon={Settings}
-            label="Roles & Permissions"
-            isOpen={openDropdown === "roles"}
-            toggle={() => handleToggle("roles")}
-            items={["Roles", "Permissions"]}
-          />
-          <DropdownList
-            icon={File}
-            label="Pages"
-            isOpen={openDropdown === "pages"}
-            toggle={() => handleToggle("pages")}
-            items={[
-              "User Profile",
-              "Account Settings",
-              "FAQ",
-              "Pricing",
-              "Misc",
-            ]}
-          />
-          <DropdownList
-            icon={Lock}
-            label="Authentications"
-            isOpen={openDropdown === "auth"}
-            toggle={() => handleToggle("auth")}
-            items={[
-              "Login",
-              "Register",
-              "Verify Email",
-              "Reset Password",
-              "Forgot Password",
-              "Two Steps",
-            ]}
-          />
-          <DropdownList
-            icon={Dots}
-            label="Wizard Examples"
-            isOpen={openDropdown === "wizard"}
-            toggle={() => handleToggle("wizard")}
-            items={["Checkout", "Property Listing", "Create Deal"]}
-          />
-
-          <li className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-violet-800 cursor-pointer rounded-md transition-all">
-            <img src={Square} alt="Modal Examples Icon" className="w-5 h-5" />
-            <span>Modal Examples</span>
-          </li>
-          <li className="mt-4 mb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-            Components
-          </li>
-          <DropdownList
-            icon={Cards}
-            label="Cards"
-            isOpen={openDropdown === "cards"}
-            toggle={() => handleToggle("cards")}
-            items={["Basic", "Advanced", "Statistics", "Analytics", "Actions"]}
-            badge={5}
-          />
-          <DropdownList
-            icon={Interface}
-            label="User Interface"
-            isOpen={openDropdown === "ui"}
-            toggle={() => handleToggle("ui")}
-            items={[
-              "Accordion",
-              "Alerts",
-              "Badges",
-              "Buttons",
-              "Carousel",
-              "Collapse",
-              "Dropdowns",
-              "Footer",
-              "List Groups",
-              "Modals",
-              "Navbar",
-              "Offcanvas",
-              "Pagination & Breadcum...",
-              "Progress",
-              "Spinners",
-              "Tabs & Pills",
-              "Toasts",
-              "Tooltips & Popovers",
-              "Typography",
-            ]}
-          />
-          <DropdownList
-            icon={UI}
-            label="Extended UI"
-            isOpen={openDropdown === "extendedUI"}
-            toggle={() => handleToggle("extendedUI")}
-            items={[
-              "Avatar",
-              "BlockUI",
-              "Drag & Drop",
-              "Media Player",
-              "Perfect Scrollbar",
-              "Star Ratings",
-              "SweetAlert2",
-              "Text Divider",
-              "Timeline",
-              "Tour",
-              "Treeview",
-              "Miscellaneous",
-            ]}
-          />
-          <DropdownList
-            icon={Tabler}
-            label="Icons"
-            isOpen={openDropdown === "icons"}
-            toggle={() => handleToggle("icons")}
-            items={["Tabler", "Font Awesome"]}
-          />
-          <li className="mt-4 mb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-            FORMS & TABLES
-          </li>
-          <DropdownList
-            icon={Toggle}
-            label="Form Elements"
-            isOpen={openDropdown === "formElements"}
-            toggle={() => handleToggle("formElements")}
-            items={[
-              "Basic Inputs",
-              "Input Groups",
-              "Custom Options",
-              "Editors",
-              "File Upload",
-              "Pickers",
-              "Select & Tags",
-              "Sliders",
-              "Switches",
-              "Extras",
-            ]}
-          />
-          <DropdownList
-            icon={FormLayout}
-            label="Form Layouts"
-            isOpen={openDropdown === "formLayouts"}
-            toggle={() => handleToggle("formLayouts")}
-            items={["Vertical Form", "Horizontal Form", "Sticky Actions"]}
-          />
-          <DropdownList
-            icon={Arrows}
-            label="Form Wizard"
-            isOpen={openDropdown === "formWizard"}
-            toggle={() => handleToggle("formWizard")}
-            items={["Numbered", "Icons"]}
-          />
-          <li className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-violet-800 cursor-pointer rounded-md transition-all">
-            <img src={Form} alt="Form Validation Icon" className="w-5 h-5" />
-            <span>Form Validation</span>
-          </li>
-          <li className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-violet-800 cursor-pointer rounded-md transition-all">
-            <img src={Table} alt="Tables Icon" className="w-5 h-5" />
-            <span>Tables</span>
-          </li>
-          <DropdownList
-            icon={DataTables}
-            label="Datatables"
-            isOpen={openDropdown === "datatables"}
-            toggle={() => handleToggle("datatables")}
-            items={["Basic", "Advanced", "Extensions"]}
-          />
-          <li className="mt-4 mb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-            Charts & Maps
-          </li>
-          <DropdownList
-            icon={Charts}
-            label="Charts"
-            isOpen={openDropdown === "charts"}
-            toggle={() => handleToggle("charts")}
-            items={["Appex Charts", "ChartJS"]}
-          />
-          <li className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-violet-800 cursor-pointer rounded-md transition-all">
-            <img src={Map} alt="Map Icon" className="w-5 h-5" />
-            <span>Leaflets Maps</span>
-          </li>
-          <li className="mt-4 mb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-            MISC
-          </li>
-          <DropdownList
-            icon={Level}
-            label="Multi Level"
-            isOpen={openDropdown === "multiLevel"}
-            toggle={() => handleToggle("multiLevel")}
-            items={["Level 2"]}
-          />
-          {[
-            { icon: Lifebuoy, label: "Support" },
-            { icon: Document, label: "Documentation" },
-          ].map(({ icon, label }, index) => (
-            <li
-              key={index}
-              className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-violet-800 cursor-pointer rounded-md transition-all"
-            >
-              <img src={icon} alt={`${label} Icon`} className="w-5 h-5" />
-              <span>{label}</span>
-            </li>
-          ))}
+                </li>
+              </React.Fragment>
+            );
+          })}
         </ul>
       </div>
     </div>

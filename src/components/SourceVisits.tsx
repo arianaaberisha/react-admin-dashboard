@@ -27,7 +27,7 @@ const SourceVisits: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-gray-600">1.2k</span>
+          <span className="text-gray-500">1.2k</span>
           <span className="w-16 h-6 flex items-center justify-center bg-green-100 rounded-md text-green-500 font-semibold">
             +4.2%
           </span>
@@ -46,7 +46,7 @@ const SourceVisits: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-gray-500 font-publicSans">31.5k</span>
+          <span className="text-gray-500 ">31.5k</span>
           <span className="w-16 h-8 flex items-center justify-center bg-green-100 rounded-md text-green-500 font-semibold">
             +8.2%
           </span>

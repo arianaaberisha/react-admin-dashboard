@@ -66,9 +66,9 @@ const EarningsChart: React.FC = () => {
 
   return (
     <div className="">
-      <div className="text-sm text-gray-500">Total Earning</div>
+      <div className="text-lg text-gray-500 dark:text-[#E1DEF5E5]">Total Earning</div>
       <div className="flex justify-start items-center gap-3  mt-2">
-        <div className="text-5xl ">87%</div>
+        <div className="text-5xl dark:text-[#E1DEF5E5] ">87%</div>
         <div className="flex items-center gap-2">
           <img src={ChevronUp} className="w-5 h-5 " ></img>
         <div className="text-green-500 text-md font-medium"> 25.8%</div>
@@ -81,12 +81,12 @@ const EarningsChart: React.FC = () => {
       <div className="space-y-1">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="bg-gray-100 p-2 rounded-lg">
+            <div className="bg-gray-100 p-2 rounded-lg dark:bg-[#2F3349] ">
               <img src={Payment} className="w-10 h-10 bg-violet-200 rounded-md shadow-md mr-2 p-2" />
             </div>
             <div>
-              <div className="text-sm font-medium">Total Revenue</div>
-              <div className="text-xs text-gray-500">Client Payment</div>
+              <div className="text-sm font-medium dark:text-[#E1DEF5E5]">Total Revenue</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">Client Payment</div>
             </div>
           </div>
           <div className="text-green-500 font-medium">+$126</div>
@@ -94,12 +94,12 @@ const EarningsChart: React.FC = () => {
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="bg-gray-100 p-2 rounded-lg">
+            <div className="bg-gray-100 p-2 rounded- dark:bg-[#2F3349] ">
               <img src={Refund} className="w-10 h-10 bg-gray-200 rounded-md shadow-md mr-2 p-2" />
             </div>
             <div>
-              <div className="text-sm font-medium">Total Sales</div>
-              <div className="text-xs text-gray-500">Refund</div>
+              <div className="text-sm font-medium dark:text-[#E1DEF5E5]">Total Sales</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">Refund</div>
             </div>
           </div>
           <div className="text-green-500 font-medium">+$98</div>

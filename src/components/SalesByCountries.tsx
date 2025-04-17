@@ -13,8 +13,8 @@ const SalesByCountries: React.FC = () => {
     return (
       <div className="">
         <div className="p-2 font-medium">
-          <h2 className="text-lg font-[500] text-[#2F2B3DE5]">Sales by Countries</h2>
-          <p className="text-md text-gray-500">Monthly Sales Overview</p>
+          <h2 className="text-lg font-[500] text-[#2F2B3DE5] dark:text-[#E1DEF5E5]">Sales by Countries</h2>
+          <p className="text-md text-gray-500 dark:text-gray-400">Monthly Sales Overview</p>
         </div>
         
         <div className="flex flex-col p-1  ">
@@ -23,8 +23,8 @@ const SalesByCountries: React.FC = () => {
             <div className="flex items-center">
               <img src={America} alt="United States" className="w-10 h-10 mr-3" />
               <div className="flex flex-col">
-                <p className="text-md text-[#2F2B3DE5] font-semibold">$8,567k</p>
-                <p className="text-sm text-[#2F2B3DB2]">United States</p>
+                <p className="text-md text-[#2F2B3DE5] font-semibold dark:text-[#E1DEF5E5] ">$8,567k</p>
+                <p className="text-sm text-[#2F2B3DB2] dark:text-gray-400">United States</p>
               </div>
             </div>
             <div className="flex items-center gap-1 justify-end ">
@@ -38,8 +38,8 @@ const SalesByCountries: React.FC = () => {
             <div className="flex items-center">
               <img src={Brazil} alt="Brazil" className="w-10 h-10 mr-3" />
               <div className="flex flex-col">
-                <p className="text-md text-[#2F2B3DE5] font-semibold">$2,415k</p>
-                <p className="text-sm text-[#2F2B3DB2]">Brazil</p>
+                <p className="text-md text-[#2F2B3DE5] font-semibold dark:text-[#E1DEF5E5]">$2,415k</p>
+                <p className="text-sm text-[#2F2B3DB2] dark:text-gray-400">Brazil</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -53,8 +53,8 @@ const SalesByCountries: React.FC = () => {
             <div className="flex items-center">
               <img src={India} alt="India" className="w-10 h-10 mr-3" />
               <div className="flex flex-col">
-                <p className="text-md text-[#2F2B3DE5] font-semibold">$865k</p>
-                <p className="text-sm text-[#2F2B3DB2]">India</p>
+                <p className="text-md text-[#2F2B3DE5] font-semibold dark:text-[#E1DEF5E5]">$865k</p>
+                <p className="text-sm text-[#2F2B3DB2] dark:text-gray-400">India</p>
               </div>
             </div>
             <div className="flex items-center gap-1 ">
@@ -68,8 +68,8 @@ const SalesByCountries: React.FC = () => {
             <div className="flex items-center">
               <img src={Australia} alt="Australia" className="w-10 h-10 mr-3" />
               <div className="flex flex-col">
-                <p className="text-md text-[#2F2B3DE5] font-semibold">$745k</p>
-                <p className="text-sm text-[#2F2B3DB2]">Australia</p>
+                <p className="text-md text-[#2F2B3DE5] font-semibold dark:text-[#E1DEF5E5]">$745k</p>
+                <p className="text-sm text-[#2F2B3DB2] dark:text-gray-400">Australia</p>
               </div>
             </div>
             <div className="flex items-center gap-2 ">
@@ -84,8 +84,8 @@ const SalesByCountries: React.FC = () => {
             <div className="flex items-center">
               <img src={France} alt="France" className="w-10 h-10 mr-3" />
               <div className="flex flex-col">
-                <p className="text-md text-[#2F2B3DE5] font-semibold">$45k</p>
-                <p className="text-sm text-[#2F2B3DB2]">France</p>
+                <p className="text-md text-[#2F2B3DE5] font-semibold dark:text-[#E1DEF5E5]">$45k</p>
+                <p className="text-sm text-[#2F2B3DB2] dark:text-gray-400">France</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -98,8 +98,8 @@ const SalesByCountries: React.FC = () => {
             <div className="flex items-center">
               <img src={China} alt="China" className="w-10 h-10 mr-3" />
               <div className="flex flex-col">
-                <p className="text-md text-[#2F2B3DE5] font-semibold">$12k</p>
-                <p className="text-sm text-[#2F2B3DB2]">China</p>
+                <p className="text-md text-[#2F2B3DE5] font-semibold dark:text-[#E1DEF5E5]">$12k</p>
+                <p className="text-sm text-[#2F2B3DB2] dark:text-gray-400">China</p>
               </div>
             </div>
             <div className="flex items-center gap-2">

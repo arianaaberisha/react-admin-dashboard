@@ -2,20 +2,19 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <div className="w-full px-6 flex items-center justify-between">
-    <div className=" bg-transparent text-gray-400 p-4 text-start ">
-      <p className="text-sm">© 2025 , made with ❤️ by Pixinvent</p>
+    <div className="w-full px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-sm gap-2 sm:gap-0">
+      <div className="text-gray-400 text-center sm:text-start">
+        <p>© 2025, made with ❤️ by Pixinvent</p>
+      </div>
+      <div className="flex flex-wrap justify-center sm:justify-end gap-4 text-[#7367F0]">
+        <p className="cursor-pointer hover:underline">License</p>
+        <p className="cursor-pointer hover:underline">More Themes</p>
+        <p className="cursor-pointer hover:underline">Documentation</p>
+        <p className="cursor-pointer hover:underline">Support</p>
+      </div>
     </div>
-    <div className="flex gap-4 text-[#7367F0] text-sm">
-    <p className=" cursor-pointer">License</p>
-    <p className="cursor-pointer">More Themes</p>
-    <p className=" cursor-pointer">Documentation</p>
-    <p className="cursor-pointer">Support</p>
-    
-    
-  </div>
-  </div>
   );
 };
 
 export default Footer;
+

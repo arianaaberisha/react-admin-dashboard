@@ -13,8 +13,8 @@ const MonthlyState: React.FC =()=>{
 
       <div className="">
       <div className="font-medium">
-        <h2 className="text-lg font-[500] text-[#2F2B3DE5]">Monthly Campaign State</h2>
-        <p className="text-md text-gray-500">8.52k Social Visiters</p>
+        <h2 className="text-lg font-[500] text-[#2F2B3DE5] dark:text-[#E1DEF5E5] ">Monthly Campaign State</h2>
+        <p className="text-md text-gray-500 dark:text-gray-400">8.52k Social Visiters</p>
       </div>
       <div className="flex items-center justify-between py-2">
   <div className="flex items-center gap-2">
@@ -23,10 +23,10 @@ const MonthlyState: React.FC =()=>{
       alt="Emails"
       className="p-2 bg-green-100 rounded-md shadow-md mr-2 "
     />
-    <p className="text-md text-[#2F2B3DE5]">Emails</p>
+    <p className="text-md text-[#2F2B3DE5] dark:text-[#E1DEF5E5]">Emails</p>
   </div>
   <div className="flex items-center gap-2">
-    <span className="text-gray-600 ">12,346</span>
+    <span className="text-gray-500  dark:text-gray-400 ">12,346</span>
     <span className="text-green-500 font-semibold">0.3%</span>
   </div>      
     </div>
@@ -38,12 +38,12 @@ const MonthlyState: React.FC =()=>{
                 className="p-2 bg-violet-200 rounded-md shadow-md mr-2 "
               />
               <div className="flex flex-col">
-                <p className="text-sm text-gray-700 ">Opened</p>
+                <p className="text-sm text-gray-700 dark:text-[#E1DEF5E5] ">Opened</p>
                 
               </div>
             </div>
             <div className="flex items-center gap-2">
-    <span className="text-gray-500">8,734</span>
+    <span className="text-gray-500  dark:text-gray-400">8,734</span>
     <span className="text-green-500 font-semibold">2.1%</span>
   </div>   
             </div>
@@ -55,12 +55,12 @@ const MonthlyState: React.FC =()=>{
                 className="p-2 bg-orange-200 rounded-md shadow-md mr-2"
               />
               <div className="flex flex-col">
-                <p className="text-sm text-gray-700">Clicked</p>
+                <p className="text-sm text-gray-700 dark:text-[#E1DEF5E5] ">Clicked</p>
                 
               </div>
               </div>
               <div className="flex items-center gap-2">
-    <span className="text-gray-500">967</span>
+    <span className="text-gray-500  dark:text-gray-400">967</span>
     <span className="text-green-500 font-semibold">1.4%</span>
   </div>   
             </div>
@@ -72,13 +72,13 @@ const MonthlyState: React.FC =()=>{
                 className="p-2 bg-violet-200 rounded-md shadow-md mr-2"
               /> 
           <div className="flex flex-col">
-                <p className="text-sm text-gray-700">Subscribe</p>
+                <p className="text-sm text-gray-700 dark:text-[#E1DEF5E5]">Subscribe</p>
                 
               </div>
               
             </div>
             <div className="flex items-center gap-2">
-    <span className="text-gray-500">345</span>
+    <span className="text-gray-500  dark:text-gray-400">345</span>
     <span className="text-green-500 font-semibold">8.5%</span>
   </div>   
             </div>
@@ -90,12 +90,12 @@ const MonthlyState: React.FC =()=>{
                 className="p-2 bg-gray-200 rounded-md shadow-md mr-2"
               />
               <div className="flex flex-col">
-                <p className="text-sm text-gray-700 ">Complaints</p>
+                <p className="text-sm text-gray-700 dark:text-[#E1DEF5E5] ">Complaints</p>
                 
               </div>
               </div>
               <div className="flex items-center gap-2">
-    <span className="text-gray-500  font-publicSans">10</span>
+    <span className="text-gray-500  dark:text-gray-400">10</span>
     <span className="text-green-500 font-semibold">1.5%</span>
   </div>   
             </div>
@@ -107,11 +107,11 @@ const MonthlyState: React.FC =()=>{
                 className="p-2 bg-red-200 rounded-md shadow-md mr-2"
               />
               <div className="flex flex-col">
-                <p className="text-sm text-gray-700">Unsubscribe</p>
+                <p className="text-sm text-gray-700 dark:text-[#E1DEF5E5]">Unsubscribe</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-    <span className="text-gray-500  font-publicSans">86</span>
+    <span className="text-gray-500  dark:text-gray-400">86</span>
     <span className="text-green-500 font-semibold">0.8%</span>
   </div>   
             </div>

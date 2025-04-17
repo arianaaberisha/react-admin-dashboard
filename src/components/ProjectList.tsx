@@ -1,25 +1,25 @@
-import React, { useState, useRef, useEffect } from "react";
-import BrandVue from "../assets/icons/Brand-vue.svg";
-import Brand from "../assets/icons/Brand.svg";
-import ReactIcon from "../assets/icons/React.svg";
-import XdIcon from "../assets/icons/brand-adobe-xd.svg";
-import World from "../assets/icons/World.svg";
-import Member1 from "../assets/icons/Avatar1.png";
-import Member2 from "../assets/icons/Avatar2.png";
-import Member3 from "../assets/icons/Avatar3.png";
-import Member4 from "../assets/icons/Avatar4.png";
-import Member5 from "../assets/icons/Avatar5.png";
-import Member6 from "../assets/icons/Avatar6.png";
-import Member7 from "../assets/icons/Avatar7.png";
-import Member8 from "../assets/icons/Avatar8.png";
-import Member9 from "../assets/icons/Avatar9.png";
-import Member10 from "../assets/icons/Avatar10.png";
-import Member11 from "../assets/icons/Avatar11.png";
-import Member12 from "../assets/icons/Avatar12.png";
-import Member13 from "../assets/icons/Avatar13.png";
-import Diamond from "../assets/icons/Diamond.svg";
-import Figma from "../assets/icons/Figma.png"
-
+ import React, { useState, useRef, useEffect } from "react";
+  import BrandVue from "../assets/icons/Brand-vue.svg";
+  import Brand from "../assets/icons/Brand.svg";
+  import ReactIcon from "../assets/icons/React.svg";
+  import XdIcon from "../assets/icons/brand-adobe-xd.svg";
+  import World from "../assets/icons/World.svg";
+  import Member1 from "../assets/icons/Avatar1.png";
+  import Member2 from "../assets/icons/Avatar2.png";
+  import Member3 from "../assets/icons/Avatar3.png";
+  import Member4 from "../assets/icons/Avatar4.png";
+  import Member5 from "../assets/icons/Avatar5.png";
+  import Member6 from "../assets/icons/Avatar6.png";
+  import Member7 from "../assets/icons/Avatar7.png";
+  import Member8 from "../assets/icons/Avatar8.png";
+  import Member9 from "../assets/icons/Avatar9.png";
+  import Member10 from "../assets/icons/Avatar10.png";
+  import Member11 from "../assets/icons/Avatar11.png";
+  import Member12 from "../assets/icons/Avatar12.png";
+  import Member13 from "../assets/icons/Avatar13.png";
+  import Diamond from "../assets/icons/Diamond.svg";
+  import Figma from "../assets/icons/Figma.png";
+  
   interface Project {
     id: number;
     name: string;
@@ -59,7 +59,7 @@ import Figma from "../assets/icons/Figma.png"
       leader: "Keith",
       teamMembers: [Member6, Member5, Member7, Member4],
       progress: 92,
-      icon:<img src={Diamond} alt="World Icon" className="w-6 h-6" />,
+      icon:<img src={Diamond} alt="Diamond Icon" className="w-6 h-6" />,
       iconBg: "bg-orange-100 rounded-full",
     },
     {
@@ -69,7 +69,7 @@ import Figma from "../assets/icons/Figma.png"
       leader: "Merline",
       teamMembers: [Member3, Member8, Member6, Member4],
       progress: 56,
-      icon:<img src={Diamond} alt="World Icon" className="w-6 h-6" />,
+      icon:<img src={Diamond} alt="Diamond Icon" className="w-6 h-6" />,
       iconBg: "bg-orange-100 rounded-full",
     },
     {
@@ -79,7 +79,7 @@ import Figma from "../assets/icons/Figma.png"
       leader: "Harmonia",
       teamMembers: [Member9, Member3, Member10],
       progress: 25,
-      icon: <img src={Figma} className="w-6 h-6"/>,
+      icon: <img src={Figma} alt="Figma Icon" className="w-6 h-6"/>,
       iconBg: "bg-pink-100",
     },
     {
@@ -182,8 +182,8 @@ import Figma from "../assets/icons/Figma.png"
   
     return (
       <div className="flex flex-col">
-        <div className="flex justify-between items-center px-4 py-2">
-          <h2 className="text-lg">Project List</h2>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap- sm:gap-0">
+          <h2 className="text-lg dark:text-[#E1DEF5E5]">Project List</h2>
           <input
             type="text"
             placeholder="Search Project"
@@ -209,16 +209,16 @@ import Figma from "../assets/icons/Figma.png"
                     onChange={handleSelectAllChange}
                   />
                 </th>
-                <th className="text-left py-2 px-2 text-sm">PROJECT</th>
-                <th className="text-left py-2 px-2 text-sm">LEADER</th>
-                <th className="text-left py-2 px-2 text-sm">TEAM</th>
-                <th className="text-left py-2 px-2 text-sm">PROGRESS</th>
-                <th className="text-left py-2 px-2 text-sm">ACTION</th>
+                <th className="text-left py-2 px-2 text-sm dark:text-[#E1DEF5E5]">PROJECT</th>
+                <th className="text-left py-2 px-2 text-sm hidden md:table-cell dark:text-[#E1DEF5E5]">LEADER</th>
+                <th className="text-left py-2 px-2 text-sm hidden md:table-cell dark:text-[#E1DEF5E5]">TEAM</th>
+                <th className="text-left py-2 px-2 text-sm hidden md:table-cell dark:text-[#E1DEF5E5]">PROGRESS</th>
+                <th className="text-left py-2 px-2 text-sm hidden md:table-cell dark:text-[#E1DEF5E5]">ACTION</th>
               </tr>
             </thead>
             <tbody>
               {currentProjects.map(project => (
-                <tr key={project.id} className="border-b">
+                <tr key={project.id} className="border-b dark:text-[#E1DEF5E5]">
                   <td className="py-1.5 px-4">
                     <input
                       type="checkbox"
@@ -230,22 +230,20 @@ import Figma from "../assets/icons/Figma.png"
                     />
                   </td>
                   <td className="py-4 px-2">
-                    <div className="flex items-center gap-2">
-                      <div
-                        className={`w-6 h-6 ${project.iconBg} rounded flex items-center justify-center`}
-                      >
+                    <div className="flex items-center gap-2 ">
+                      <div className={`w-6 h-6 ${project.iconBg} rounded flex items-center justify-center`}>
                         {project.icon}
                       </div>
                       <div>
-                        <div className="text-sm font-semibold text-[#2F2B3DE5]">
+                        <div className="text-sm font-semibold text-[#2F2B3DE5] dark:text-[#E1DEF5E5]">
                           {project.name}
                         </div>
                         <div className="text-xs text-gray-500">{project.date}</div>
                       </div>
                     </div>
                   </td>
-                  <td className="px-2 text-sm">{project.leader}</td>
-                  <td className="px-2">
+                  <td className="px-2 text-sm hidden md:table-cell ">{project.leader}</td>
+                  <td className="px-2 hidden md:table-cell">
                     <div className="flex -space-x-1">
                       {project.teamMembers.slice(0, 3).map((imgSrc, index) => (
                         <img
@@ -262,7 +260,7 @@ import Figma from "../assets/icons/Figma.png"
                       )}
                     </div>
                   </td>
-                  <td className="py-1.5 px-2">
+                  <td className="py-1.5 px-2 hidden md:table-cell">
                     <div className="flex items-center gap-1">
                       <div className="flex-1 h-1.5 bg-gray-200 rounded-full">
                         <div
@@ -273,17 +271,17 @@ import Figma from "../assets/icons/Figma.png"
                       <span className="text-sm">{project.progress}%</span>
                     </div>
                   </td>
-                  <td className="py-1.5 px-2">
-                    <button className="text-[#2F2B3DE5] text-lg font-semibold">
+                  <td className="py-1.5 px-2 hidden md:table-cell">
+                    <button className="text-[#2F2B3DE5] text-lg font-semibold dark:bg-[#2F3349] dark:text-[#ffffff]">
                       ⋮
                     </button>
                   </td>
                 </tr>
               ))}
             </tbody>
-            </table>
+          </table>
         </div>
-
+  
         <div className="flex justify-between items-center px-4 py-2 border-t">
           <div className="text-xs text-gray-500">
             Showing {indexOfFirstItem + 1} to{" "}
@@ -334,3 +332,4 @@ import Figma from "../assets/icons/Figma.png"
   };
   
   export default ProjectList;
+  

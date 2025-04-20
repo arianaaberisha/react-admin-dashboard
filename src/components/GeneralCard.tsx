@@ -7,7 +7,7 @@ interface GeneralCardProps {
 
 const GeneralCard: React.FC<GeneralCardProps> = ({ children, className }) => {
   return (
-    <div className={`w-full shadow-lg rounded-lg p-6  overflow-hidden ${className}`}>
+    <div className={`w-full shadow-lg rounded-lg p-6  overflow-hidden  ${className}`}>
       {children}
     </div>
   );

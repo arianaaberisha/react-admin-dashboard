@@ -13,6 +13,7 @@ const SupportTracker: React.FC = () => {
       toolbar: { show: false },
       zoom: { enabled: false },
       offsetY: -50,
+      background: "transparent",
     },
     colors: ["#7367F0"],
     plotOptions: {
@@ -23,13 +24,14 @@ const SupportTracker: React.FC = () => {
         dataLabels: {
           name: {
             show: true,
-            color: "#707070",
+            color: "#00000",
             fontSize: "14px",
             offsetY: -20,
           },
           value: {
             offsetY: 10,
             fontSize: "36px",
+            color: "#00000",
             formatter: function (val: number) {
               return val.toFixed(0) + "%";
             },
@@ -58,16 +60,23 @@ const SupportTracker: React.FC = () => {
     <div className="p-4 flex flex-col md:flex-row md:justify-between gap-6 h-full">
       <div className="flex flex-col w-full md:w-1/2">
         <div>
-          <h2 className="text-lg text-[#2F2B3DE5] dark:text-[#E1DEF5E5]">Support Tracker</h2>
-          <p className="text-md text-gray-500 dark:text-gray-400">Last 7 Days</p>
+          <h2 className="text-lg text-[#2F2B3DE5] dark:text-[#E1DEF5E5]">
+            Support Tracker
+          </h2>
+          <p className="text-md text-gray-500 dark:text-gray-400">
+            Last 7 Days
+          </p>
         </div>
 
         <div className="mb-10 mt-3">
-          <p className="text-4xl font-[500] text-[#2F2B3DE5] dark:text-[#E1DEF5E5]">164</p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">Total Tickets</p>
+          <p className="text-4xl font-[500] text-[#2F2B3DE5] dark:text-[#E1DEF5E5]">
+            164
+          </p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            Total Tickets
+          </p>
         </div>
 
-    
         <div className="flex justify-center md:hidden ">
           <div className="w-[290px] h-[250px]">
             <ChartComponents
@@ -83,7 +92,7 @@ const SupportTracker: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 sm:flex sm:flex-row sm:justify-start md:flex md:flex-col md:space-y-4 gap-4 ">
+        <div className="grid grid-cols-1 sm:flex sm:flex-col sm:justify-start md:flex md:flex-col md:space-y-4 gap-2 ">
           <div className="flex items-center">
             <img
               src={Ticket}
@@ -91,8 +100,12 @@ const SupportTracker: React.FC = () => {
               className="w-8 h-8 bg-[#F1F0FF] rounded-md shadow-md mr-2"
             />
             <div className="flex flex-col">
-              <p className="text-sm text-gray-700 font-[600] dark:text-gray-400">New Tickets</p>
-              <p className="text-sm font-semibold text-gray-400 dark:text-gray-500">142</p>
+              <p className="text-sm text-gray-700 font-[600] dark:text-gray-400">
+                New Tickets
+              </p>
+              <p className="text-sm font-semibold text-gray-400 dark:text-gray-500">
+                142
+              </p>
             </div>
           </div>
           <div className="flex items-center">
@@ -102,8 +115,12 @@ const SupportTracker: React.FC = () => {
               className="w-8 h-8 bg-[#E8F8FF] rounded-md shadow-md mr-2"
             />
             <div className="flex flex-col">
-              <p className="text-sm text-gray-700 font-semibold dark:text-gray-400">Open Tickets</p>
-              <p className="text-sm font-semibold text-gray-400 dark:text-gray-500">28</p>
+              <p className="text-sm text-gray-700 font-semibold dark:text-gray-400">
+                Open Tickets
+              </p>
+              <p className="text-sm font-semibold text-gray-400 dark:text-gray-500">
+                28
+              </p>
             </div>
           </div>
           <div className="flex items-center">
@@ -113,15 +130,19 @@ const SupportTracker: React.FC = () => {
               className="w-8 h-8 bg-[#FFF3EA] rounded-md shadow-md mr-2"
             />
             <div className="flex flex-col">
-              <p className="text-sm text-gray-700 font-semibold  dark:text-gray-400">Response Time</p>
-              <p className="text-sm font-semibold text-gray-400  dark:text-gray-500">1 Day</p>
+              <p className="text-sm text-gray-700 font-semibold dark:text-gray-400">
+                Response Time
+              </p>
+              <p className="text-sm font-semibold text-gray-400 dark:text-gray-500">
+                1 Day
+              </p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="hidden md:flex justify-center items-center w-1/2 h-3/2">
-        <div className="">
+        <div>
           <ChartComponents
             type="radialBar"
             options={area3options}

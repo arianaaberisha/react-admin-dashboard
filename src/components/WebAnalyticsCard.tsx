@@ -106,7 +106,7 @@ export const ViewTwo = () => {
           </div>
         </div>
       </div>
-      <div className="mt-4 md:mt-0 md:absolute md:top-[30%] md:right-[15%]">
+      <div className="mt-4 md:mt-0 md:absolute md:top-[30%] md:right-[15%] lg:mt-0 lg:absolute lg:top-[20%] lg:right-[5%]">
         <img src={CardAnalytics2} alt="Analytics Card 2" width={200} height={150} />
       </div>
     </div>
@@ -160,7 +160,7 @@ export const ViewThree = () => {
           </div>
         </div>
       </div>
-      <div className="mt-4 md:mt-0 md:absolute md:top-[30%] md:right-[15%]">
+      <div className="mt-4 md:mt-0 md:absolute md:top-[30%] md:right-[15%] lg:mt-0 lg:absolute lg:top-[20%] lg:right-[5%]">
         <img src={CardAnalytics3} alt="Analytics Card 3" width={200} height={150} />
       </div>
     </div>

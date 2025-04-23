@@ -19,24 +19,6 @@ const Body: React.FC = () => {
   return (
     <div className="mx-auto p-4 space-y-4">
       <div className="flex justify-end gap-2 mb-4">
-        <button
-          className={`px-4 py-2 rounded ${view === "analytics" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
-          onClick={() => setView("analytics")}
-        >
-          Analytics
-        </button>
-        <button
-          className={`px-4 py-2 rounded ${view === "crm" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
-          onClick={() => setView("crm")}
-        >
-          CRM
-        </button>
-        <button
-          className={`px-4 py-2 rounded ${view === "ecommerce" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
-          onClick={() => setView("ecommerce")}
-        >
-          E-Commerce
-        </button>
       </div>
 
       {view === "crm" && <CrmBody />}

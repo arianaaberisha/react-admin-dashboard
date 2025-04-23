@@ -17,40 +17,46 @@ const ECommerceBody: React.FC = () => {
       <div className="mx-auto p-4 space-y-4">
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-12 sm:col-span-6 lg:col-span-4 relative rounded-lg dark:bg-[#2F3349]">
-            <ECommerceCard className="h-[220px]">
+            <ECommerceCard className="h-[200px]">
               <BestSeller />
             </ECommerceCard>
           </div>
           <div className="col-span-12 sm:col-span-6 lg:col-span-8 relative dark:bg-[#2F3349]">
-            <ECommerceCard className="h-[220px]">
+            <ECommerceCard className="h-[200px]">
              <Statistics />
             </ECommerceCard>
           </div>
         </div>
-        <div className="grid grid-cols-12 gap-4 ">
-              <div className="col-span-12 lg:col-span-2 relative dark:bg-[#2F3349]">
-                <ECommerceCard className="h-[500px]">
-                  <Profit />
-                </ECommerceCard>
-              </div>
-              <div className="col-span-12 lg:col-span-2 relative dark:bg-[#2F3349]">
-                <ECommerceCard className="h-[500px]">
-                  <Expenses />
-                </ECommerceCard>
-              </div>
-              <div className="col-span-12 lg:col-span-8 relative dark:bg-[#2F3349]">
-                <ECommerceCard className="h-[500px]">
-                  <RevenueReports/>
-                </ECommerceCard>
-              </div>
-            </div>
-            <div className="grid grid-cols-12 gap-4">
-              <div className="col-span-12 lg:col-span-2 dark:bg-[#2F3349]">
-                <ECommerceCard className=" p-6 h-[500px]">
-               <GeneratedLeads />
-                </ECommerceCard>
-              </div>
-              </div>
+          <div className="grid grid-cols-12 gap-4">
+  <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
+ 
+    <div className="flex flex-col md:flex-row gap-4">
+      <div className="w-full md:w-1/2 dark:bg-[#2F3349]">
+        <ECommerceCard className="h-[260px]">
+          <Profit />
+        </ECommerceCard>
+      </div>
+      <div className="w-full md:w-1/2  pr-4">
+        <ECommerceCard className="h-[260px] ">
+          <Expenses />
+        </ECommerceCard>
+      </div>
+    </div>
+    <div className="dark:bg-[#2F3349]">
+      <ECommerceCard className="h-[225px]">
+        <GeneratedLeads />
+      </ECommerceCard>
+    </div>
+  </div>
+
+  <div className="col-span-12 lg:col-span-8 dark:bg-[#2F3349]">
+    <ECommerceCard className="h-[500px]">
+      <RevenueReports />
+    </ECommerceCard>
+  </div>
+</div>
+
+
             <div className="grid grid-cols-12 gap-4">
               <div className="col-span-12 lg:col-span-4 dark:bg-[#2F3349]">
                 <ECommerceCard className=" p-6 h-[500px]">

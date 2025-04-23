@@ -27,7 +27,7 @@ const Body: React.FC = () => {
         <>
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-12 lg:col-span-6 relative rounded-lg bg-[#7367F0]">
-              <GeneralCard>
+              <GeneralCard className="h-[350px]">
                 <WebAnalyticsCard />
               </GeneralCard>
             </div>

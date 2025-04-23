@@ -99,7 +99,7 @@ const DropdownList: React.FC<DropdownListProps> = ({
                   to={path}
                   className={`block px-4 py-1 rounded text-sm ${
                     location.pathname === path
-                      ? "bg-violet-100 text-violet-800 font-semibold"
+                      ? "bg-[#7367F0] text-white font-semibold"
                       : "text-gray-600 dark:text-gray-300 hover:text-violet-800"
                   }`}
                 >
@@ -256,7 +256,7 @@ const Menu: React.FC<MenuProps> = ({ isCollapsed, onToggleCollapse, showExpandBu
                     </div>
                     {!effectiveCollapsed && (item.badge || item.items) && (
                       <div className="flex items-center space-x-2">
-                        {item.badge && <span className="text-xs text-white bg-violet-500 px-2 py-0.5 rounded-full dark:text-white">{item.badge}</span>}
+                        {item.badge && <span className="text-xs text-white bg-red-500 px-3 py-1 p-1 rounded-full dark:text-white">{item.badge}</span>}
                         {item.items && (openDropdown === item.label ? <ChevronDown className="w-4 h-4 dark:text-white" /> : <ChevronRight className="w-4 h-4 dark:text-white" />)}
                       </div>
                     )}

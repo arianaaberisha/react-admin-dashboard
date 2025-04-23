@@ -44,6 +44,7 @@ const EarningReportsCard: React.FC = () => {
       axisBorder: { show: false },
       labels: { style: { colors: "#A3AED0", fontSize: "12px" } },
       crosshairs: { show: false },
+      
     },
     yaxis: {
       labels: {
@@ -52,7 +53,7 @@ const EarningReportsCard: React.FC = () => {
       },
       axisBorder: { show: false }
     },
-    grid: { strokeDashArray: 4, borderColor: "#E5E7EB" },
+    grid: { strokeDashArray: 4, borderColor: "transparent" },
     tooltip: { y: { formatter: (val) => `${val}k` } }
   };
 
@@ -69,7 +70,7 @@ const EarningReportsCard: React.FC = () => {
   };
 
   return (
-    <div className="rounded-lg shadow p-6 space-y-4">
+    <div className=" p-6 space-y-4">
       <div>
         <h3 className="text-xl font-medium text-[#2F2B3DE5] dark:text-[#E1DEF5E5]">
           Earning Reports
@@ -86,9 +87,9 @@ const EarningReportsCard: React.FC = () => {
             <button
               key={key}
               onClick={() => handleClick(key)}
-              className={`flex flex-col items-center justify-center h-[100px] w-[110px] rounded-md border transition \
+              className={`flex flex-col items-center justify-center h-[100px] w-[110px] dark:bg-transparent rounded-md border transition \
                 ${active === key
-                  ? "border-indigo-600 bg-indigo-50 text-indigo-600"
+                  ? "border-indigo-600 bg-transparent text-indigo-600"
                   : "border-dashed border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400"}`
               }
             >
@@ -97,7 +98,7 @@ const EarningReportsCard: React.FC = () => {
             </button>
           );
         })}
-        <button className="h-[100px] w-[110px] rounded-md border-dashed border-gray-300 dark:border-gray-600 text-gray-400 flex items-center justify-center">
+        <button className="h-[100px] w-[110px] rounded-md border-dashed border-gray-300 dark:border-gray-600 text-gray-400 flex dark:bg-transparent items-center justify-center">
           +
         </button>
       </div>

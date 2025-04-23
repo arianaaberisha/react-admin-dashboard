@@ -44,7 +44,7 @@ const CrmBody: React.FC = () => {
         </div>
       </div>
       <div className="grid grid-cols-12 gap-4 ">
-            <div className="col-span-12 lg:col-span-8 relative dark:bg-[#2F3349] ">
+            <div className="col-span-12 lg:col-span-8 relative dark:bg-[#2F3349]">
               <CrmCard className="h-[500px]">
                 <EarningReports />
               </CrmCard>

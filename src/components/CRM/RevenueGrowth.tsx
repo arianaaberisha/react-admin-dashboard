@@ -67,7 +67,7 @@ const RevenueGrowth: React.FC = () => {
         
           <div className="">
             <div className="text-[28px] font-[500] text-gray-800 dark:text-[#E1DEF5E5] mt-6">$4,673</div>
-            <div className="text-green-500 text-sm md:text-md font-semibold bg-green-200 px-2 py-1 rounded-md shadow-md mt-2">
+            <div className="text-green-500 text-sm md:text-md font-semibold bg-green-200  p-1 px-4 rounded-md shadow-md mt-2">
               +15.2%
             </div>
         </div>

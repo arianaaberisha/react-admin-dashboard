@@ -49,7 +49,7 @@ const OrderCard: React.FC = () => {
         />
       </div>
       <div className="flex items-end justify-between mt-2">
-        <p className="text-xl font-[500] text-gray-800">124k</p>
+        <p className="text-xl font-[500] text-gray-800 dark:text-gray-300">124k</p>
         <p className="text-sm text-green-500 font-medium">+12.6%</p>
       </div>
     </div>

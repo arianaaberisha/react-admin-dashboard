@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Body from './components/Body';
 import Footer from './components/Footer';
 import CRM from './pages/CRM';
+import ECommerce from './pages/ECommerce';
 
 const App: React.FC = () => {
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(true);
@@ -41,7 +42,6 @@ const App: React.FC = () => {
 
   return (
     <div className="relative w-screen h-screen overflow-x-hidden bg-gray-50 dark:bg-[#25293C]">
-      {/* SIDEBAR */}
       {!isMobileOrTablet ? (
         <aside
           className="fixed top-0 left-0 h-full border-r bg-white shadow-md transition-all duration-500 ease-in-out z-[100]"
@@ -66,8 +66,6 @@ const App: React.FC = () => {
           </aside>
         )
       )}
-
-      {/* NAVBAR */}
       <header
         className="fixed top-4 transition-all duration-300 h-16 bg-white flex items-center shadow-lg rounded-md z-10 dark:bg-[#2F3349]"
         style={{
@@ -83,8 +81,6 @@ const App: React.FC = () => {
           isMobileOrTablet={isMobileOrTablet}
         />
       </header>
-
-      {/* MAIN + ROUTES */}
       <main
         className="transition-all duration-300 mt-20 h-[calc(100vh-4rem)] overflow-y-auto p-5 dark:bg-[#25293C]"
         style={{
@@ -93,19 +89,11 @@ const App: React.FC = () => {
         }}
       >
         <Routes>
-          {/* Redirect root → /analytics */}
           <Route path="/" element={<Navigate to="/analytics" replace />} />
-
-          {/* Analytics page */}
           <Route path="/analytics" element={<Body />} />
-
-         :
-            <Route path="/crm" element={<CRM />} />
-            
-          
+          <Route path="/crm" element={<CRM />} />
+          <Route path="ecommerce" element={<ECommerce />} />
         </Routes>
-
-        {/* Footer always rendered */}
         <Footer />
       </main>
     </div>

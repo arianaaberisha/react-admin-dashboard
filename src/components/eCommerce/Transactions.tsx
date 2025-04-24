@@ -14,7 +14,6 @@ interface Transactions {
   iconColor: string;
   iconBg: string;
 }
-
 const transactions: Transactions[] = [
   {
     Icon: Wallet,
@@ -87,7 +86,6 @@ const Transactions: React.FC = () => {
         </h2>
         <p className="text-[15px] font-[400] text-[#2F2B3D8C] dark:text-gray-400">Total 58 transactions done in month</p>
       </div>
-
       {transactions.map(
         ({ Icon, label, subLabel,value, iconBg, iconColor }) => (
           <div key={label} className="flex items-center justify-between py-2">

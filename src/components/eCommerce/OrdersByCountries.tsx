@@ -38,8 +38,7 @@ const ordersData = {
 };
 
 const OrdersByCountries = () => {
-  const [activeTab, setActiveTab] = useState("Shipping");
-
+  const [activeTab, setActiveTab] = useState("New");
   const orders = ordersData[activeTab as keyof typeof ordersData];
 
   return (
@@ -56,7 +55,7 @@ const OrdersByCountries = () => {
             onClick={() => setActiveTab(tab)}
             className={`pb-3 text-[15px] focus:outline-none dark:bg-transparent ${
               activeTab === tab
-                ? "text-[#7367F0] border-b-3 border-b-[#7367F0] "
+                ? "text-[#7367F0] border-b-3 border-b-[#7367F0] rounded-none "
                 : ""
             }`}
           >

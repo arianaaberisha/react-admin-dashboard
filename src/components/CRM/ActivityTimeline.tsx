@@ -1,10 +1,10 @@
-import React, { useRef, useEffect, useState } from "react";
-import Invoice from "../../assets/icons/InvoicesPdf.png"
+import React from "react";
+import ListDetails from "../Icons/List-details";
+import Invoice from "../../assets/icons/InvoicesPdf.png";
 import Member1 from "../../assets/icons/Avatar6.png";
 import Member2 from "../../assets/icons/Avatar7.png";
 import Member3 from "../../assets/icons/Avatar11.png";
 import Member from "../../assets/icons/Avatar12.png";
-import ListDetails from '../Icons/List-details';
 
 type TimelineItem = {
   title: string;
@@ -28,15 +28,15 @@ const timelineData: TimelineItem[] = [
   },
   {
     title: "Client Meeting",
-    description: "Project meeting with john @10:15am",
+    description: "Project meeting with John @10:15am",
     time: "45 min ago",
     type: "meeting",
-    clientName: "Lester McCarthy",
+    clientName: "Lester McCarthy(Client)",
     clientTitle: "CEO of Pixinvent",
     extraContent: (
-      <div className="mt-1 flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
-        <img src={Member} className="w-10 h-10 rounded-full" />
-        <span>CEO of Pixinvent</span>
+      <div className="mt-1 flex items-center gap-1 text-[13px] font-[400] text-[#2F2B3DB2] dark:text-gray-400">
+        <img src={Member} className="w-10 h-10 rounded-full" alt="client" />
+        <span>{"CEO of Pixinvent"}</span>
       </div>
     ),
   },
@@ -49,105 +49,80 @@ const timelineData: TimelineItem[] = [
   },
 ];
 
-const getDotColor = (type: TimelineItem["type"]) => {
-  switch (type) {
-    case "paid":
-      return "bg-[#7367F0]";
-    case "meeting":
-      return "bg-green-500";
-    case "project":
-      return "bg-sky-500";
-  }
-};
+const DOT_COLORS = {
+  paid: "bg-[#7367F0]",
+  meeting: "bg-[#28C76F]",
+  project: "bg-[#00BAD1]",
+} as const;
 
-const ActivityTimeline: React.FC = () => {
-  const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [dividerHeights, setDividerHeights] = useState<number[]>([]);
+type TimelineEventProps = { item: TimelineItem };
 
-  useEffect(() => {
-    const heights: number[] = [];
-    for (let i = 0; i < timelineData.length - 1; i++) {
-      const currentDot = dotRefs.current[i];
-      const nextDot = dotRefs.current[i + 1];
-      if (currentDot && nextDot) {
-        const currentRect = currentDot.getBoundingClientRect();
-        const nextRect = nextDot.getBoundingClientRect();
-        const gap = nextRect.top - currentRect.bottom;
-        heights.push(gap);
-      } else {
-        heights.push(50); 
-      }
-    }
-    setDividerHeights(heights);
-  }, [timelineData.length]);
-
-  return (
-    <div className="p-6 w-full mt-4">
-      <div className="flex justify-start mb-6 items-center gap-3">
-      <ListDetails className="w-5 h-5 ml-4 dark:stroke-white"/>
-        <h2 className="text-lg text-[#2F2B3DE5] dark:text-[#E1DEF5E5] font-[500]">Activity Timeline</h2>
-        
+const TimelineEvent: React.FC<TimelineEventProps> = ({ item }) => (
+  <li className="relative pl-8 mt-1">
+    <div className="absolute left-1 w-px bg-[#2F2B3D1F] dark:bg-gray-600 top-5 bottom-0"></div>
+    <span
+      className={`absolute top-0 left-0 w-3 h-3 rounded-full ${DOT_COLORS[item.type]}`}
+    ></span>
+    <time className="absolute top-0 right-0 text-[13px] text-[#2F2B3D66] font-[400] dark:text-gray-400">
+      {item.time}
+    </time>
+    <div className="pr-16">
+      <div className="text-[15px] text-[#2F2B3DE5] font-[500] dark:text-[#E1DEF5E5]">{item.title}</div>
+      <div className="text-[15px] font-[400] text-[#2F2B3DB2] dark:text-gray-400 mt-1">
+        {item.description}
       </div>
 
-      <div className="pl-4 flex flex-col justify-between">
-        <div className="space-y-2">
-          {timelineData.map((item, index) => (
-            <div key={index} className="flex gap-4 items-start relative">
-              <div
-                className="flex flex-col items-center z-10"
-                ref={(el) => {
-                  dotRefs.current[index] = el;
-                }}
-              >
-                <span className={`w-3 h-3 rounded-full ${getDotColor(item.type)}`}></span>
-                <div
-                  className="w-px bg-gray-300"
-                  style={{ height: index < dividerHeights.length ? dividerHeights[index] : 20 }}
-                />
-              </div>
-              <div className="flex-1">
-                <div className="font-medium  dark:text-[#E1DEF5E5]">{item.title}</div>
-                <div className="text-sm text-gray-500 mt-1  dark:text-gray-400">{item.description}</div>
-
-                {item.file && (
-                  <div className="mt-2 inline-flex items-center font-[500] text-gray-600 border dark:text-gray-400 border-gray-200 bg-gray-200 dark:bg-gray-700 dark:border-transparent px-2 py-1 rounded text-sm gap-1 cursor-pointer w-fit">
-                    <img src={Invoice} className="w-5 h-5"/>
-                    {item.file}
-                  </div>
-                )}
-
-                {item.clientName && (
-                  <div className="mt-2 text-sm text-gray-700  dark:text-gray-400">
-                    <span className="font-semibold ">{item.clientName}</span>
-                  </div>
-                )}
-
-                {item.extraContent && item.clientTitle  && <div>{item.extraContent}</div>}
-
-                {item.people && (
-                  <div className="flex mt-2 ">
-                    {item.people.map((src, i) => (
-                      <img
-                        key={i}
-                        src={src}
-                        alt="member"
-                        className={`w-12 h-12 rounded-full border-2  border-white -ml-2 ${i === 0 ? "ml-0" : ""}`}
-                      />
-                    ))}
-                    <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-sm font-medium border-2 border-white -ml-2 ">
-                      +{6 - item.people.length}
-                    </span>
-                  </div>
-                )}
-
-                <div className="text-sm flex justify-end text-gray-400 mt-1 ">{item.time}</div>
-              </div>
-            </div>
-          ))}
+      {item.file && (
+        <div className="mt-2 inline-flex items-center font-medium text-[#2F2B3DB2] dark:text-gray-400 \
+           dark:bg-gray-700 bg-[#2F2B3D0F] \
+          px-2 py-1 rounded text-[15px] gap-1 cursor-pointer">
+          <img src={Invoice} className="w-5 h-5" alt="file icon" />
+          {item.file}
         </div>
-      </div>
+      )}
+
+      {item.clientName && (
+        <div className="mt-2 text-[13px] font-[500] text-[#2F2B3DB2] dark:text-gray-400">
+          <span className="font-semibold">{item.clientName}</span>
+        </div>
+      )}
+
+      {item.extraContent}
+
+      {item.people && (
+        <div className="flex mt-2">
+          {item.people.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt="member"
+              className={`w-12 h-12 rounded-full border-2 border-white -ml-2 ${i === 0 ? "ml-0" : ""}`}
+            />
+          ))}
+          <span className="w-12 h-12 flex items-center justify-center border-2 border-white rounded-full bg-[#EEEDF0] \
+            text-[15px] text-[#2F2B3DE5] font-[400] -ml-2">
+            +{6 - item.people.length}
+          </span>
+        </div>
+      )}
     </div>
-  );
-};
+  </li>
+);
+
+const ActivityTimeline: React.FC = () => (
+  <div className="p-6 w-full mt-4">
+    <div className="flex items-center gap-3 mb-6 pl-4">
+      <ListDetails className="w-5 h-5 dark:stroke-white" />
+      <h2 className="text-[18px] font-[500] text-[#2F2B3DE5] dark:text-[#E1DEF5E5]">
+        Activity Timeline
+      </h2>
+    </div>
+    <ul className="relative pl-4">
+      {timelineData.map((item, index) => (
+        <TimelineEvent key={index} item={item} />
+      ))}
+    </ul>
+  </div>
+);
 
 export default ActivityTimeline;

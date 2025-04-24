@@ -32,46 +32,47 @@ const RevenueReports: React.FC = () => {
     },
 
   };
+  
   const series = [
-          {
-            name: 'Profit',
-            data: [600, 100, 800, 320, 660, 50, 1000,660,800,50,950,700],
-          },
-        ];
-      
-        const options: ApexCharts.ApexOptions = {
-          chart: {
-            type: 'line',
-            toolbar: { show: false },
-            sparkline: { enabled: true },
-          },
-          stroke: {
-            curve: 'smooth',
-            width: 3,
-          },
-          markers: {
-            size: 0,
-            colors: ['#7367F0'],
-            strokeColors: '#fff',
-            strokeWidth: 2,
-            hover: {
-              size: 7,
-            },
-          },
-          colors: ['#7367F0'],
-          tooltip: { enabled: false },
-          grid: {
-            show: false,
-          },
-          xaxis: {
-            labels: { show: false },
-            axisBorder: { show: false },
-            axisTicks: { show: false },
-          },
-          yaxis: {
-            show: false,
-          },
-        };
+    {
+      name: 'Profit',
+      data: [600, 100, 800, 320, 660, 50, 1000,660,800,50,950,700],
+    },
+  ];
+
+  const options: ApexCharts.ApexOptions = {
+    chart: {
+      type: 'line',
+      toolbar: { show: false },
+      sparkline: { enabled: true },
+    },
+    stroke: {
+      curve: 'smooth',
+      width: 3,
+    },
+    markers: {
+      size: 0,
+      colors: ['#7367F0'],
+      strokeColors: '#fff',
+      strokeWidth: 2,
+      hover: {
+        size: 7,
+      },
+    },
+    colors: ['#7367F0'],
+    tooltip: { enabled: false },
+    grid: {
+      show: false,
+    },
+    xaxis: {
+      labels: { show: false },
+      axisBorder: { show: false },
+      axisTicks: { show: false },
+    },
+    yaxis: {
+      show: false,
+    },
+  };
 
   const years = ['2025', '2024', '2023', '2022'];
   const [open, setOpen] = useState(false);
@@ -129,21 +130,21 @@ const RevenueReports: React.FC = () => {
       </ul>
     )}
   </div>
-  <div className="flex justify-center mt-6">
-    <div className="p-4 flex flex-col">
-      <div className="text-[#2F2B3DE5] text-[28px] font-[500] dark:text-[#E1DEF5E5]">$25,825</div>
-      <p className="text-[15px] text-[#4B465C] dark:text-gray-300">
-        Budget: 56,800
-      </p>
-      <ApexCharts options={options} series={series} type="line" height={100} />
-    </div>
-  </div>
-</div>
-
-      
+       <div className="flex justify-center mt-6">
+         <div className="p-4 flex flex-col">
+         <div className="text-[#2F2B3DE5] text-[28px] font-[500] dark:text-[#E1DEF5E5]">$25,825</div>
+          <p className="text-[15px] text-[#4B465C] dark:text-gray-300">
+          Budget: 56,800
+          </p>
+         </div>
+       </div>
+        <div className='flex flex-col justify-center items-center overflow-visible'>
+        <ApexCharts options={options} series={series} type="line" height={100} width={300} />
+        <button className='bg-[#7367F0] text-white font-[500] text-[15px] mt-10'>Increase Budget</button>
+       </div>
+       </div> 
       </div>
-    
-  );
-};
+      );
+    };
 
 export default RevenueReports;

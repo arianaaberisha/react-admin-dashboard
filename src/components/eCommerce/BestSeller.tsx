@@ -3,6 +3,7 @@ import Picture from "../../assets/icons/BestSeller.png";
 
 const BestSeller:React.FC=()=>{
     return(
+        
         <div className="flex justify-start gap-16">
         <div className="flex flex-col justify-start p-6 ">
             <div className="text-[#2F2B3DE5] font-[500] text-[18px] dark:text-[#E1DEF5E5]">Congratulations John</div>

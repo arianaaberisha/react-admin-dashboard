@@ -19,7 +19,7 @@ const options: ApexOptions = {
         endAngle: 90,
         track: {
           background: '#e7e7e7',
-          strokeWidth: '97%',
+          strokeWidth: '57%',
           margin: 12,
           dropShadow: {
             enabled: false,
@@ -54,7 +54,6 @@ const options: ApexOptions = {
   const series: number[] = [76];
   
 const Expenses:React.FC=()=>{
-    
     return(
         <div className="flex flex-col p-6">
             <div className="text-[#2F2B3DE5] text-[18px] font-[500] dark:text-[#E1DEF5E5]">82.5k</div>

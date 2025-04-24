@@ -57,7 +57,6 @@ const Profit:React.FC=()=>{
             </div>
           </div>
         </div>
-
     )
 };
 export default Profit;

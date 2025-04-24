@@ -45,8 +45,10 @@ const GeneratedLeads: React.FC = () => {
           },
         },
       },
+      stroke:{
+        show: false,
+      },
     };
-    
   return (
     <div className="p-6">
       <div className="flex justify-between items-start">

@@ -14,8 +14,8 @@ import Invoice from "./Invoice";
 
 const ECommerceBody: React.FC = () => {
     return (
-      <div className="mx-auto p-4 space-y-4">
-        <div className="grid grid-cols-12 gap-4">
+      <div className="mx-auto p-2 sm:p-4 space-y-4">
+        <div className="grid grid-cols-12 gap-2 sm:gap-4">
           <div className="col-span-12 sm:col-span-6 lg:col-span-4 relative rounded-lg dark:bg-[#2F3349]">
             <ECommerceCard className="h-[200px]">
               <BestSeller />
@@ -27,16 +27,16 @@ const ECommerceBody: React.FC = () => {
             </ECommerceCard>
           </div>
         </div>
-          <div className="grid grid-cols-12 gap-4">
-            <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
-            <div className="flex flex-col md:flex-row gap-4">
+          <div className="grid grid-cols-12 gap-2 sm:gap-4">
+            <div className="col-span-12 lg:col-span-4 flex flex-col gap-2 sm:gap-4">
+            <div className="flex flex-col md:flex-row gap-2 sm:gap-4">
             <div className="w-full md:w-1/2 dark:bg-[#2F3349]">
             <ECommerceCard className="h-[260px]">
              <Profit />
            </ECommerceCard>
            </div>
-           <div className="w-full md:w-1/2  pr-4">
-           <ECommerceCard className="h-[260px] ">
+           <div className="w-full md:w-1/2 dark:bg-[#2F3349]">
+           <ECommerceCard className="h-[260px]">
              <Expenses />
           </ECommerceCard>
            </div>
@@ -48,14 +48,14 @@ const ECommerceBody: React.FC = () => {
            </div>
          </div>
         <div className="col-span-12 lg:col-span-8 dark:bg-[#2F3349]">
-         <ECommerceCard className="h-[500px]">
+         <ECommerceCard className="h-[500px] ">
            <RevenueReports />
           </ECommerceCard>
           </div>
           </div>
-            <div className="grid grid-cols-12 gap-4">
+            <div className="grid grid-cols-12 gap-2 sm:gap-4">
               <div className="col-span-12 lg:col-span-4 dark:bg-[#2F3349]">
-                <ECommerceCard className=" p-6 h-[540px]">
+                <ECommerceCard className="p-4 sm:p-6 h-[540px]">
                  <EarningReports />
                 </ECommerceCard>
               </div>
@@ -70,14 +70,14 @@ const ECommerceBody: React.FC = () => {
                 </ECommerceCard>
               </div>
             </div>
-            <div className="grid grid-cols-12 gap-4 ">
+            <div className="grid grid-cols-12 gap-2 sm:gap-4">
               <div className="col-span-12 lg:col-span-4 relative dark:bg-[#2F3349]">
                 <ECommerceCard className="h-[540px]">
                  <Transactions />
                 </ECommerceCard>
               </div>
               <div className="col-span-12 lg:col-span-8 relative dark:bg-[#2F3349]">
-                <ECommerceCard className="h-[540px]">
+                <ECommerceCard className="">
                   <Invoice />
                 </ECommerceCard>
               </div>

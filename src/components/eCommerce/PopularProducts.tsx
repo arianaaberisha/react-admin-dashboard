@@ -5,6 +5,7 @@ import Headphones from "../../assets/icons/headphones.png";
 import Speaker from "../../assets/icons/speaker.png";
 import PlayStation from "../../assets/icons/play-station.png";
 import Watch from "../../assets/icons/watch.png";
+import CardComponent from "../CardComponent";
 
 interface Product {
   iconSrc: string;
@@ -77,28 +78,15 @@ const PopularProducts: React.FC = () => {
       </div>
 
       {products.map(
-        ({ iconSrc, alt, label, subLabel, value }) => (
-          <div key={label} className="flex items-center justify-between py-2">
-            <div className="flex items-center gap-2">
-              <img
-                src={iconSrc}
-                alt={alt}
-                className="w-14 h-14 rounded-md"
-              />
-              <div>
-                <div className="text-[15px] font-[500] text-[#2F2B3DE5] dark:text-[#E1DEF5E5]">
-                  {label}
-                </div>
-                <div className="text-[13px] font-[400] text-[#2F2B3DB2] dark:text-gray-400">
-                  {subLabel}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <span className="text-[15px] font-[400] text-[#2F2B3DB2] dark:text-gray-400">{value}</span>
-            </div>
-          </div>
+        ({ iconSrc, label, subLabel, value }) => (
+          <CardComponent
+            key={label}
+            iconSrc={iconSrc}
+            label={label}
+            subLabel={subLabel}
+            value={value}
+            
+          />
         )
       )}
     </div>

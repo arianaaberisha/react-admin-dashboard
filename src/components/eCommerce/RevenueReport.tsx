@@ -10,9 +10,19 @@ const RevenueReports: React.FC = () => {
   ];
 
   const options1: ApexCharts.ApexOptions = {
-    chart: { type: 'bar', stacked: true, height: 400, toolbar: { show: false } },
+    chart: { 
+      type: 'bar', 
+      stacked: true, 
+      height: 350, 
+      toolbar: { show: false } 
+    },
     plotOptions: {
-      bar: { horizontal: false, columnWidth: '20%', borderRadius: 5, borderRadiusApplication: 'around' },
+      bar: { 
+        horizontal: false, 
+        columnWidth: '20%', 
+        borderRadius: 5, 
+        borderRadiusApplication: 'around' 
+      },
     },
     dataLabels: { enabled: false },
     stroke: { show: false },
@@ -30,7 +40,16 @@ const RevenueReports: React.FC = () => {
       enabled: false,
       y: { formatter: (val: number) => `$${val}` },
     },
-
+    responsive: [
+      {
+        breakpoint: 640,
+        options: {
+          chart: {
+            height: 150
+          }
+        }
+      }
+    ]
   };
   
   const series = [
@@ -90,61 +109,63 @@ const RevenueReports: React.FC = () => {
   }, []);
 
   return (
-    <div className="p-6 h-full flex">
-      <div className="w-1/2 p-4 border-r border-gray-200 dark:border-gray-700">
-        <div className="text-[18px] text-[#2F2B3DE5] dark:text-[#E1DEF5E5] font-[500]">
+    <div className="p-3 sm:p-4 md:p-6 h-full flex flex-col md:flex-row">
+      <div className="w-full md:w-1/2 p-2 sm:p-4 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-700">
+        <div className="text-base sm:text-lg text-[#2F2B3DE5] dark:text-[#E1DEF5E5] font-medium">
           Revenue Report
         </div>
-        <div className="h-60 mt-3 mb-2">
-          <ApexCharts options={options1} series={series1} type="bar" height={400} />
+        <div className="h-[150px] sm:h-[200px] mt-2 sm:mt-3 mb-2">
+          <ApexCharts options={options1} series={series1} type="bar" height="100%" />
         </div>
       </div>
-      <div className="relative w-1/2 p-4" ref={ref}>
-  <div className="relative flex justify-center">
-    <button
-      onClick={() => setOpen(o => !o)}
-      className="w-30 flex justify-between items-center px-4 py-2 bg-[#7367F029] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-[#7367F0] rounded-lg hover:shadow"
-    >
-      <span className="text-lg font-semibold">{selectedYear}</span>
-      <svg
-        className="w-4 h-4 ml-2"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
-    {open && (
-      <ul className="absolute mt-12 z-20 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg w-30">
-        {years.slice(1).map(year => (
-          <li key={year}>
-            <button
-              onClick={() => { setSelectedYear(year); setOpen(false); }}
-              className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+      <div className="relative w-full md:w-1/2 p-2 sm:p-4 flex flex-col" ref={ref}>
+        <div className="relative flex justify-center">
+          <button
+            onClick={() => setOpen(o => !o)}
+            className="w-30 flex justify-between items-center px-3 sm:px-4 py-2 bg-[#7367F029] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-[#7367F0] rounded-lg hover:shadow"
+          >
+            <span className="text-base sm:text-lg font-semibold">{selectedYear}</span>
+            <svg
+              className="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              {year}
-            </button>
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>
-       <div className="flex justify-center mt-6">
-         <div className="p-4 flex flex-col">
-         <div className="text-[#2F2B3DE5] text-[28px] font-[500] dark:text-[#E1DEF5E5]">$25,825</div>
-          <p className="text-[15px] text-[#4B465C] dark:text-gray-300">
-          Budget: 56,800
-          </p>
-         </div>
-       </div>
-        <div className='flex flex-col justify-center items-center overflow-visible'>
-        <ApexCharts options={options} series={series} type="line" height={100} width={300} />
-        <button className='bg-[#7367F0] text-white font-[500] text-[15px] mt-10'>Increase Budget</button>
-       </div>
-       </div> 
-      </div>
-      );
-    };
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          {open && (
+            <ul className="absolute mt-12 z-20 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg w-30">
+              {years.slice(1).map(year => (
+                <li key={year}>
+                  <button
+                    onClick={() => { setSelectedYear(year); setOpen(false); }}
+                    className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    {year}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div className="flex justify-center mt-2 sm:mt-4">
+          <div className="p-2 sm:p-4 flex flex-col">
+            <div className="text-[#2F2B3DE5] text-xl sm:text-2xl font-medium dark:text-[#E1DEF5E5]">$25,825</div>
+            <p className="text-sm sm:text-base text-[#4B465C] dark:text-gray-300">
+              Budget: 56,800
+            </p>
+          </div>
+        </div>
+        <div className='flex flex-col justify-center items-center mt-2 flex-grow'>
+          <div className="w-full h-[80px] sm:h-[100px]">
+            <ApexCharts options={options} series={series} type="line" height="100%" width="100%" />
+          </div>
+          <button className='bg-[#7367F0] text-white font-medium text-sm sm:text-base mt-2 sm:mt-4 px-3 py-1 sm:px-4 sm:py-2 rounded'>Increase Budget</button>
+        </div>
+      </div> 
+    </div>
+  );
+};
 
 export default RevenueReports;

@@ -48,24 +48,24 @@ const OrdersByCountries = () => {
         <p className="text-sm sm:text-base font-[400] text-[#2F2B3D8C] dark:text-gray-400">2 deliveries in progress</p>
       </div>
 
-      <div className="flex space-x-4 sm:space-x-8 md:space-x-20 border-b border-gray-200 dark:border-gray-500 text-sm font-medium text-gray-400 mb-3 sm:mb-4 overflow-x-auto">
+      <div className="flex sm:space-x-8 md:space-x-20 lg:space-x-10 border-b border-gray-200 dark:border-gray-500 text-sm font-medium text-gray-400 mb-3 sm:mb-4 overflow-x-auto">
         {tabs.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`pb-2 sm:pb-3 text-sm sm:text-base whitespace-nowrap focus:outline-none dark:bg-transparent ${
+            className={`pb-2 sm:pb-3 text-sm sm:text-base  dark:bg-transparent ${
               activeTab === tab
                 ? "text-[#7367F0] border-b-2 sm:border-b-3 border-b-[#7367F0] rounded-none "
-                : ""
+                : "rounded-none"
             }`}
           >
             {tab}
           </button>
         ))}
       </div>
-      <div className="overflow-y-auto max-h-[300px] sm:max-h-[400px]">
+      <div className="overflow-y-auto pl-2 max-h-[300px] sm:max-h-[400px] lg:pl-3">
         {orders.map((order, idx) => (
-          <div key={idx} className="mb-3 sm:mb-4 relative pl-5 sm:pl-6 border-1 border-dashed border-gray-300">
+          <div key={idx} className="mb-3 sm:mb-4 relative pl-6 sm:pl-6 border-1 border-dashed border-gray-300">
             <div className="mb-4 sm:mb-6">
               <div className="absolute -left-1 text-[#28C76F]">
                 <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />

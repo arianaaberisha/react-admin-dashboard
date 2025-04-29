@@ -22,9 +22,9 @@ const Statistics: React.FC = () => {
           Updated 1 month ago
         </p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:mb-2">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:mb-2 lg:mt-14">
         {items.map((item, i) => (
-          <div key={i} className="flex items-center space-x-2 p-2 sm:p-3  border border-gray-100 dark:border-gray-700 rounded-lg">
+          <div key={i} className="flex items-center space-x-2 p-2 sm:p-1">
             <div className="flex-shrink-0">{item.icon}</div>
             <div className="min-w-0">
               <div className="text-sm sm:text-base font-[500] text-[#2F2B3DE5] dark:text-[#E1DEF5E5] truncate">

@@ -17,7 +17,7 @@ const Body: React.FC = () => {
   const [view, setView] = useState<"crm" | "analytics" | "ecommerce">("analytics");
 
   return (
-    <div className="mx-auto p-4 space-y-4">
+    <div className="mx-auto space-y-4">
       <div className="flex justify-end gap-2 mb-4">
       </div>
 

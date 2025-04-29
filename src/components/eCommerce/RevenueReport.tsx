@@ -3,6 +3,35 @@ import ApexCharts from 'react-apexcharts';
 import ReactApexChart from 'react-apexcharts';
 
 const RevenueReports: React.FC = () => {
+  const [chartHeight, setChartHeight] = useState(350);
+  const [chartWidth, setChartWidth] = useState('100%');
+  const chartContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const updateChartDimensions = () => {
+      if (chartContainerRef.current) {
+        const containerWidth = chartContainerRef.current.offsetWidth;
+      
+        if (containerWidth < 640) {
+          setChartHeight(200);
+        } else if (containerWidth < 768) {
+          setChartHeight(250);
+        } else if (containerWidth < 1024) {
+          setChartHeight(300);
+        } else {
+          setChartHeight(350);
+        }
+        
+        setChartWidth('100%');
+      }
+    };
+    updateChartDimensions();
+    window.addEventListener('resize', updateChartDimensions);
+    return () => {
+      window.removeEventListener('resize', updateChartDimensions);
+    };
+  }, []);
+
   const series1 = [
     { name: 'Yellow', data: [-40, -60, -80, -50, -35, -25, -35, -50, -80] },
     { name: 'Spacer', data: [8, 8, 8, 8, 8, 8, 8, 8, 8] },
@@ -13,14 +42,15 @@ const RevenueReports: React.FC = () => {
     chart: { 
       type: 'bar', 
       stacked: true, 
-      height: 350, 
+      height: chartHeight,
+      width: chartWidth,
       toolbar: { show: false } 
     },
     plotOptions: {
       bar: { 
         horizontal: false, 
         columnWidth: '20%', 
-        borderRadius: 5, 
+        borderRadius: 2, 
         borderRadiusApplication: 'around' 
       },
     },
@@ -39,17 +69,7 @@ const RevenueReports: React.FC = () => {
     tooltip: {
       enabled: false,
       y: { formatter: (val: number) => `$${val}` },
-    },
-    responsive: [
-      {
-        breakpoint: 640,
-        options: {
-          chart: {
-            height: 150
-          }
-        }
-      }
-    ]
+    }
   };
   
   const series = [
@@ -114,11 +134,11 @@ const RevenueReports: React.FC = () => {
         <div className="text-base sm:text-lg text-[#2F2B3DE5] dark:text-[#E1DEF5E5] font-medium">
           Revenue Report
         </div>
-        <div className="h-[150px] sm:h-[200px] mt-2 sm:mt-3 mb-2">
-          <ApexCharts options={options1} series={series1} type="bar" height="100%" />
+        <div ref={chartContainerRef} className="h-[150px] sm:h-[200px] md:h-[250px] lg:h-[300px] mt-2 sm:mt-3 mb-2">
+          <ApexCharts options={options1} series={series1} type="bar" height="100%" width="100%" />
         </div>
       </div>
-      <div className="relative w-full md:w-1/2 p-2 sm:p-4 flex flex-col" ref={ref}>
+      <div className="relative w-full  md:w-1/2 p-2 sm:p-4 flex flex-col" ref={ref}>
         <div className="relative flex justify-center">
           <button
             onClick={() => setOpen(o => !o)}

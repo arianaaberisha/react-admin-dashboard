@@ -39,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
           </button>
         )}
-        <div className="flex items-center rounded-md border border-gray-100 px-2 h-[56px] dark:bg-[#2F3349] dark:border-none">
+        <div className="flex items-center rounded-md px-2 h-[56px] dark:bg-[#2F3349] dark:border-none">
           <FaSearch className="text-gray-500 mr-2 " />
           <input
             type="text"
@@ -48,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({
           />
         </div>
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         <Language className="w-6 h-6 cursor-pointer dark:text-[#E1DEF5E5]" />
         <div className="relative">
   <Computer
@@ -75,7 +75,6 @@ const Navbar: React.FC<NavbarProps> = ({
     </div>
   )}
 </div>
-
         <Grid className="w-6 h-6 cursor-pointer dark:text-[#E1DEF5E5]" />
         <Bell className="w-6 h-6 cursor-pointer dark:text-[#E1DEF5E5] " />
         <img

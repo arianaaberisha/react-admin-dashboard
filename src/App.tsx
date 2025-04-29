@@ -6,6 +6,7 @@ import Body from './components/Body';
 import Footer from './components/Footer';
 import CRM from './pages/CRM';
 import ECommerce from './pages/ECommerce';
+import Logistics from './pages/Logistics';
 
 const App: React.FC = () => {
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(true);
@@ -45,7 +46,7 @@ const App: React.FC = () => {
       {!isMobileOrTablet ? (
         <aside
           className="fixed top-0 left-0 h-full border-r bg-white shadow-md transition-all duration-500 ease-in-out z-[100]"
-          style={{ minWidth: isMenuCollapsed && !isHovered ? '80px' : '350px' }}
+          style={{ minWidth: isMenuCollapsed && !isHovered ? '80px' : '300px' }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -67,9 +68,9 @@ const App: React.FC = () => {
         )
       )}
       <header
-        className="fixed top-4 transition-all duration-300 h-16 bg-white flex items-center shadow-lg rounded-md z-10 dark:bg-[#2F3349]"
+        className="fixed top-4 md:mr-6 md:ml-6 lg:mr-12 lg:ml-1 transition-all duration-300 h-14 bg-white flex items-center shadow-lg rounded-md z-10 dark:bg-[#2F3349]"
         style={{
-          left: !isMobileOrTablet ? `${isMenuCollapsed ? '120px' : '370px'}` : '20px',
+          left: !isMobileOrTablet ? `${isMenuCollapsed ? '140px' : '390px'}` : '20px',
           right: '20px'
         }}
       >
@@ -82,10 +83,11 @@ const App: React.FC = () => {
         />
       </header>
       <main
-        className="transition-all duration-300 mt-20 h-[calc(100vh-4rem)] overflow-y-auto p-5 dark:bg-[#25293C]"
+        className="transition-all duration-300 mt-24 h-[calc(100vh-4rem)] overflow-y-auto dark:bg-[#25293C]"
         style={{
           marginLeft: !isMobileOrTablet ? `${isMenuCollapsed ? '120px' : '370px'}` : '20px',
-          marginRight: '20px'
+          marginRight: '20px',
+          padding: '0 24px'
         }}
       >
         <Routes>
@@ -93,6 +95,7 @@ const App: React.FC = () => {
           <Route path="/analytics" element={<Body />} />
           <Route path="/crm" element={<CRM />} />
           <Route path="ecommerce" element={<ECommerce />} />
+          <Route path="/logistics" element={<Logistics />} />
         </Routes>
         <Footer />
       </main>

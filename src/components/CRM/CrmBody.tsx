@@ -1,4 +1,3 @@
-
 import CrmCard from "./CRMCard";
 import Order from "./Order";
 import TotalProfit from "./TotalProfit";
@@ -15,7 +14,7 @@ import ActivityTimeline from "./ActivityTimeline";
 
 const CrmBody: React.FC = () => {
   return (
-    <div className="mx-auto p-4 space-y-4">
+    <div className="mx-auto space-y-4">
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-12 sm:col-span-6 lg:col-span-2 relative rounded-lg dark:bg-[#2F3349]">
           <CrmCard className="h-[220px]">

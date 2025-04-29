@@ -6,6 +6,7 @@ import Draft from "../Icons/Draft";
 import InfoCircle from "../Icons/InfoCircle";
 import PaidChart from "../Icons/PaidChart";
 import ChevronDown from "../Icons/ChevronDown";
+import Pagination from '../Pagination';
 
 
 interface Project {
@@ -397,9 +398,9 @@ const iconStyleMapping: Record<string, { bgColor: string, strokeColor: string }>
 };
 
 const getIconStyle = (Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> | undefined) => {
-  if (!Icon) return { bgColor: "bg-gray-100", strokeColor: "stroke-gray-400" };
+  if (!Icon) return { bgColor: "bg-white", strokeColor: "stroke-white" };
   
-  const iconKey = Object.entries(iconMapping).find(([_, component]) => component === Icon)?.[0];
+  const iconKey = Object.entries(iconMapping).find(([key, component]) => component === Icon)?.[0];
   
   if (iconKey && iconStyleMapping[iconKey]) {
     return iconStyleMapping[iconKey];
@@ -501,6 +502,67 @@ const Invoice: React.FC = () => {
     }
   };
 
+  const renderPaginationButtons = () => {
+    const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+    const buttons = [];
+
+    // Show ellipsis if we're not near the start
+    if (currentPage > 2) {
+      buttons.push(
+        <span key="ellipsis1" className="px-2 py-1 text-sm">
+          ...
+        </span>
+      );
+    }
+
+    // Show previous page if not first page
+    if (currentPage > 1) {
+      buttons.push(
+        <button
+          key={currentPage - 1}
+          className="px-2 py-1 text-sm border hover:bg-gray-100 rounded"
+          onClick={() => setCurrentPage(currentPage - 1)}
+        >
+          {currentPage - 1}
+        </button>
+      );
+    }
+
+    // Show current page
+    buttons.push(
+      <button
+        key={currentPage}
+        className="px-2 py-1 text-sm bg-[#7367F0] text-white rounded"
+      >
+        {currentPage}
+      </button>
+    );
+
+    // Show next page if not last page
+    if (currentPage < totalPages) {
+      buttons.push(
+        <button
+          key={currentPage + 1}
+          className="px-2 py-1 text-sm border hover:bg-gray-100 rounded"
+          onClick={() => setCurrentPage(currentPage + 1)}
+        >
+          {currentPage + 1}
+        </button>
+      );
+    }
+
+    // Show ellipsis if we're not near the end
+    if (currentPage < totalPages - 1) {
+      buttons.push(
+        <span key="ellipsis2" className="px-2 py-1 text-sm">
+          ...
+        </span>
+      );
+    }
+
+    return buttons;
+  };
+
   return (
     <div className="flex flex-col p-1">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-2 md:p-4 space-y-2 md:space-y-0">
@@ -580,10 +642,10 @@ const Invoice: React.FC = () => {
                 />
               </th>
               <th className="text-left py-2 px-2 text-sm dark:text-[#E1DEF5E5]">#</th>
-              <th className="text-left py-2 px-2 text-sm hidden sm:table-cell dark:text-[#E1DEF5E5]">STATUS</th>
-              <th className="text-left py-2 px-2 text-sm hidden sm:table-cell dark:text-[#E1DEF5E5]">TOTAL</th>
-              <th className="text-left py-2 px-2 text-sm hidden sm:table-cell dark:text-[#E1DEF5E5]">ISSUED DATE</th>
-              <th className="text-left py-2 px-2 text-sm hidden sm:table-cell dark:text-[#E1DEF5E5]">ACTIONS</th>
+              <th className="text-left py-2 px-2 text-sm sm:table-cell dark:text-[#E1DEF5E5]">STATUS</th>
+              <th className="text-left py-2 px-2 text-sm sm:table-cell dark:text-[#E1DEF5E5]">TOTAL</th>
+              <th className="text-left py-2 px-2 text-sm sm:table-cell dark:text-[#E1DEF5E5]">ISSUED DATE</th>
+              <th className="text-left py-2 px-2 text-sm sm:table-cell dark:text-[#E1DEF5E5]">ACTIONS</th>
             </tr>
           </thead>
           <tbody>
@@ -606,7 +668,7 @@ const Invoice: React.FC = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-2 text-sm hidden sm:table-cell">
+                <td className="px-2 text-sm sm:table-cell">
                   {project.Icon && (
                     <div className={`${getIconStyle(project.Icon).bgColor} rounded-full p-1.5 inline-flex items-center justify-center`}>
                       {React.createElement(project.Icon, { 
@@ -615,13 +677,13 @@ const Invoice: React.FC = () => {
                     </div>
                   )}
                 </td>
-                <td className="px-2 hidden sm:table-cell">
-                  <div className="flex -space-x-1 text-[15px] font-[400] text-[#2F2B3DB2]">{project.total}</div>
+                <td className="px-2 sm:table-cell">
+                  <div className="flex -space-x-1 text-[15px] font-[400] text-[#2F2B3DB2] dark:text-gray-400">{project.total}</div>
                 </td>
-                <td className="py-1.5 px-2 hidden sm:table-cell">
+                <td className="py-1.5 px-2 sm:table-cell">
                   <div className="text-[15px] font-[400] text-[#2F2B3DB2] text-gray-400">{project.date}</div>
                 </td>
-                <td className="py-1.5 px-2 hidden sm:table-cell">
+                <td className="py-1.5 px-2 sm:table-cell">
                   <button className="flex items-center gap-3 text-[#2F2B3DE5] text-lg font-semibold dark:bg-[#2F3349] dark:text-[#ffffff]">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                       <path d="M3 6h18M19 6l-1 14H6L5 6h14zM10 11v6M14 11v6" />
@@ -649,43 +711,12 @@ const Invoice: React.FC = () => {
         <div className="text-xs text-gray-500">
           Showing {filteredProjects.length === 0 ? 0 : indexOfFirstItem + 1} to {Math.min(indexOfLastItem, filteredProjects.length)} of {filteredProjects.length} entries
         </div>
-        <div className="flex gap-1 overflow-x-auto">
-          <button
-            className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
-            onClick={() => setCurrentPage(1)}
-          >
-            «
-          </button>
-          <button
-            className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
-            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-          >
-            ‹
-          </button>
-          {Array.from({ length: Math.ceil(filteredProjects.length / itemsPerPage) }, (_, i) => i + 1).map(page => (
-            <button
-              key={page}
-              className={`px-2 py-1 text-sm ${currentPage === page ? "bg-[#7367F0] text-white" : "border hover:bg-gray-100"} rounded`}
-              onClick={() => setCurrentPage(page)}
-            >
-              {page}
-            </button>
-          ))}
-          <button
-            className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
-            onClick={() =>
-              setCurrentPage((p) => Math.min(Math.ceil(filteredProjects.length / itemsPerPage), p + 1))
-            }
-          >
-            ›
-          </button>
-          <button
-            className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
-            onClick={() => setCurrentPage(Math.ceil(filteredProjects.length / itemsPerPage))}
-          >
-            »
-          </button>
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalItems={filteredProjects.length}
+          itemsPerPage={itemsPerPage}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </div>
   );

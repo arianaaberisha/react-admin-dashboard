@@ -62,7 +62,7 @@ const DropdownList: React.FC<DropdownListProps> = ({
       {label && (
         <button
           onClick={toggle}
-          className="flex items-center justify-between w-full text-gray-700 dark:text-gray-200 hover:text-violet-800 focus:outline-none px-4 py-2"
+          className="flex items-center justify-between w-full text-gray-700 dark:text-gray-200 focus:outline-none px-4 py-2"
         >
           <div className="flex items-center space-x-2">
             <img src={icon as string} alt={`${label} Icon`} className="w-5 h-5" />
@@ -82,14 +82,14 @@ const DropdownList: React.FC<DropdownListProps> = ({
       )}
       <Motion
         style={{
-          height: spring(isOpen ? items.length * 32 : 0, { stiffness: 150, damping: 10 }),
+          height: spring(isOpen ? items.length * 48 : 0, { stiffness: 150, damping: 10 }),
           opacity: spring(isOpen ? 1 : 0, { stiffness: 150, damping: 10 }),
         }}
       >
         {({ height, opacity }: { height: number; opacity: number }) => (
           <ul
           style={{ height, opacity, overflow: "hidden" }}
-          className="list-disc ml-8 mt-2 space-y-1 transition-all duration-150"
+          className="ml-2 mt-2 space-y-2 transition-all duration-150"
         >
           {items.map((itemName, index) => {
             const path = `/${itemName.toLowerCase().replace(/\s+/g, '')}`;
@@ -98,10 +98,10 @@ const DropdownList: React.FC<DropdownListProps> = ({
               <li key={index}>
                 <Link
                   to={path}
-                  className={`block px-4 py-1 rounded text-sm ${
+                  className={`px-4 py-1 h-[38px] rounded-md text-[15px] font-[400] text-left flex justify-start items-center ${
                     location.pathname === path
-                      ? "bg-[#7367F0] text-white font-semibold"
-                      : "text-gray-600 dark:text-gray-300 hover:text-violet-800"
+                      ? "bg-[#7367F0] text-white"
+                      : "text-gray-600 dark:text-gray-300"
                   }`}
                 >
                   {itemName}
@@ -192,15 +192,14 @@ const Menu: React.FC<MenuProps> = ({ isCollapsed, onToggleCollapse, showExpandBu
   return (
     <div className="h-screen bg-white flex flex-col transition-all duration-150 dark:bg-[#2F3349]">
       <div className={`flex items-center h-16 px-4 border-b ${effectiveCollapsed ? "justify-center" : "justify-between"} transition-all duration-150`}>
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
         <CustomVuexyIcon effectiveCollapsed={true} />
           {!effectiveCollapsed && <span className="text-xl font-bold text-gray-800 dark:text-gray-300">Vuexy</span>}
         </div>
         {(!effectiveCollapsed || showExpandButton) && (
-          <button onClick={handleToggleButtonClick} className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-150 dark:bg-gray-800 " title={effectiveCollapsed ? "Pin menu open" : "Collapse menu"}>
-            <div className="w-6 h-6 rounded-full border-2 border-gray-700 flex items-center justify-center dark:border-gray-500">
-              <div className="w-2 h-2 rounded-full bg-gray-700 dark:bg-gray-500"></div>
-            </div>
+          
+          <button onClick={handleToggleButtonClick} className="p-2 bg-transparent rounded-full border-2 duration-150 border-gray-700 flex items-center justify-center dark:border-[#E1DEF5E5]" title={effectiveCollapsed ? "Pin menu open" : "Collapse menu"}>  
+          <div className="w-2 h-2 rounded-full bg-gray-700 dark:bg-[#E1DEF5E5]"></div>
           </button>
         )}
       </div>
@@ -211,12 +210,12 @@ const Menu: React.FC<MenuProps> = ({ isCollapsed, onToggleCollapse, showExpandBu
             return (
               <div key={index}>
                 {section && (
-                  <li className={`mt-4 mb-1 text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider ${effectiveCollapsed ? "text-center" : ""}`}>
+                  <li className={`mt-4 mb-1 text-xs font-semibold text-gray-400 dark:text-gray-500  ${effectiveCollapsed ? "text-center" : ""}`}>
                     {!effectiveCollapsed && section.title}
                   </li>
                 )}
                 <li>
-                  <button onClick={() => handleToggle(item.label)} className={`w-full flex items-center px-3 py-2 rounded-lg hover:bg-violet-500 transition-colors duration-150 dark:bg-[#2F3349] ${effectiveCollapsed ? "justify-center" : "justify-between"}`}>
+                  <button onClick={() => handleToggle(item.label)} className={`w-full h-[38px] flex bg-transparent items-center px-3 py-2 rounded-md hover:bg-[#80839014] border-none duration-150 dark:bg-[#2F3349] ${effectiveCollapsed ? "justify-center" : "justify-between"}`}>
                     <div className={`flex items-center ${effectiveCollapsed ? "justify-center" : ""}`}>
                       <div className="w-9 h-9 flex items-center justify-center">{item.icon}</div>
                       {!effectiveCollapsed && <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{item.label}</span>}

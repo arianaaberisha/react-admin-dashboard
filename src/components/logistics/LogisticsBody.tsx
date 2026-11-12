@@ -37,35 +37,35 @@ const LogisticsBody: React.FC = () => {
         </div>
         <div className="grid grid-cols-12 gap-4 ">
               <div className="col-span-12 sm:col-span-6 lg:col-span-6 relative dark:bg-[#2F3349]">
-            <LogisticsCard className="h-[405px]">
+            <LogisticsCard className="h-full min-h-[405px]">
               <VehiclesOverview />
             </LogisticsCard>
           </div>
           <div className="col-span-12 sm:col-span-6 lg:col-span-6 relative dark:bg-[#2F3349]">
-                <LogisticsCard className="h-[405px]">
+                <LogisticsCard className="h-full min-h-[405px]">
                   <ShipmentStatistics />
                 </LogisticsCard>
               </div>
             </div>
             <div className="grid grid-cols-12 gap-4">
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 relative dark:bg-[#2F3349]">
-                <LogisticsCard className="h-[504px]">
+                <LogisticsCard className="h-full min-h-[504px]">
                   <DeliveryPerformance />
                 </LogisticsCard>
               </div>
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 relative dark:bg-[#2F3349]">
-                <LogisticsCard className=" p-6 h-[504px]">
+                <LogisticsCard className=" p-6 h-full min-h-[504px]">
                   <DeliveryExpectations />
                 </LogisticsCard>
               </div>
               <div className="col-span-12 sm:col-span-6 lg:col-span-4 relative dark:bg-[#2F3349]">
-                <LogisticsCard className="h-[504px]">
+                <LogisticsCard className="h-full min-h-[504px]">
               <OrdersByCountries />
                 </LogisticsCard>
               </div>
             </div>
             <div className="col-span-12 sm:col-span-6 lg:col-span-12 relative dark:bg-[#2F3349]">
-                <LogisticsCard className="h-[494px]">
+                <LogisticsCard className="h-full min-h-[494px]">
                   <OnRoute />
                 </LogisticsCard>
               </div>

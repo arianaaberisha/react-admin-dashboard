@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Menu from './components/Menu';
 import Navbar from './components/Navbar';
 import Body from './components/Body';
@@ -9,9 +9,8 @@ import ECommerce from './pages/ECommerce';
 import Logistics from './pages/Logistics';
 
 const App: React.FC = () => {
-  const [isMenuCollapsed, setIsMenuCollapsed] = useState(true);
+  const [isMenuCollapsed, setIsMenuCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(window.innerWidth <= 1024);
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('theme') === 'dark';
@@ -33,61 +32,64 @@ const App: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const onMenuToggleHandler = (value: boolean) => {
+  const location = useLocation();
+
+  // Close the mobile sidebar after navigating
+  useEffect(() => {
+    setIsMobileSidebarOpen(false);
+  }, [location.pathname]);
+
+  const toggleSidebar = () => {
     if (isMobileOrTablet) {
       setIsMobileSidebarOpen(prev => !prev);
     } else {
-      setIsMenuCollapsed(value);
+      setIsMenuCollapsed(prev => !prev);
     }
   };
+
+  const sidebarWidth = isMenuCollapsed ? 80 : 260;
 
   return (
     <div className="relative w-screen h-screen overflow-x-hidden bg-gray-50 dark:bg-[#25293C]">
       {!isMobileOrTablet ? (
         <aside
-          className="fixed top-0 left-0 h-full border-r bg-white shadow-md transition-all duration-500 ease-in-out z-[100]"
-          style={{ minWidth: isMenuCollapsed && !isHovered ? '80px' : '300px' }}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          className="fixed top-0 left-0 h-full border-r bg-white shadow-md transition-[width] duration-300 ease-in-out z-[100] overflow-hidden dark:bg-[#2F3349]"
+          style={{ width: sidebarWidth }}
         >
-          <Menu
-            isCollapsed={isMenuCollapsed && !isHovered}
-            onToggleCollapse={() => setIsMenuCollapsed(prev => !prev)}
-          />
+          <Menu isCollapsed={isMenuCollapsed} onToggleCollapse={toggleSidebar} />
         </aside>
       ) : (
         isMobileSidebarOpen && (
-          <aside
-            className="fixed top-0 left-0 h-full w-[250px] border-r bg-white shadow-md transition-all duration-500 ease-in-out z-[150] dark:bg-[#2F3349]"
-          >
-            <Menu
-              isCollapsed={false}
-              onToggleCollapse={() => setIsMobileSidebarOpen(false)}
+          <>
+            <div
+              className="fixed inset-0 bg-black/40 z-[140]"
+              onClick={() => setIsMobileSidebarOpen(false)}
             />
-          </aside>
+            <aside className="fixed top-0 left-0 h-full w-[250px] border-r bg-white shadow-md z-[150] dark:bg-[#2F3349]">
+              <Menu isCollapsed={false} onToggleCollapse={() => setIsMobileSidebarOpen(false)} />
+            </aside>
+          </>
         )
       )}
       <header
         className="fixed top-4 md:mr-6 md:ml-6 lg:mr-12 lg:ml-1 transition-all duration-300 h-14 bg-white flex items-center shadow-lg rounded-md z-10 dark:bg-[#2F3349]"
         style={{
-          left: !isMobileOrTablet ? `${isMenuCollapsed ? '140px' : '390px'}` : '20px',
+          left: !isMobileOrTablet ? `${sidebarWidth + 60}px` : '20px',
           right: '20px'
         }}
       >
         <Navbar
           toggleDarkMode={() => setDarkMode(!darkMode)}
           darkMode={darkMode}
-          isMenuCollapsed={isMenuCollapsed}
-          onMenuToggle={onMenuToggleHandler}
-          isMobileOrTablet={isMobileOrTablet}
+          onMenuToggle={toggleSidebar}
         />
       </header>
       <main
-        className="transition-all duration-300 mt-24 h-[calc(100vh-4rem)] overflow-y-auto dark:bg-[#25293C]"
+        className="transition-all duration-300 mt-24 h-[calc(100vh-6rem)] overflow-y-auto dark:bg-[#25293C]"
         style={{
-          marginLeft: !isMobileOrTablet ? `${isMenuCollapsed ? '120px' : '370px'}` : '20px',
+          marginLeft: !isMobileOrTablet ? `${sidebarWidth + 40}px` : '20px',
           marginRight: '20px',
-          padding: '0 24px'
+          padding: '0 24px 16px'
         }}
       >
         <Routes>

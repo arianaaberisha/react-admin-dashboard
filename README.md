@@ -1,54 +1,65 @@
-# React + TypeScript + Vite
+# React Admin Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive admin dashboard built with React and TypeScript. I recreated the layout of the Vuexy admin template to practice building complex interfaces: charts, data tables, theming and responsive layouts. It uses static sample data and has no backend.
 
-Currently, two official plugins are available:
+![Analytics dashboard in light mode](screenshots/analytics-light.jpg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Four dashboard pages:** Analytics, CRM, eCommerce and Logistics
+- **Light and dark mode,** remembered between visits
+- **Collapsible sidebar,** which becomes a slide-over menu on mobile
+- **Page search** in the navbar (press `Ctrl + K` to focus it)
+- **Interactive tables** with search, status filter, pagination and row deletion
+- **Charts** built with ApexCharts (bar, line, area, radial, donut and radar)
+- **Responsive layout** from phone to desktop
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Screenshots
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+| Dark mode (eCommerce) | Mobile (Analytics) |
+| --- | --- |
+| ![eCommerce dashboard in dark mode](screenshots/ecommerce-dark.jpg) | ![Analytics dashboard on mobile](screenshots/analytics-mobile.jpg) |
+
+## Tech stack
+
+- React 19 and TypeScript
+- Vite
+- Tailwind CSS and Material UI
+- ApexCharts (`react-apexcharts`)
+- React Router
+
+## Getting started
+
+Requires Node.js 18 or newer.
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open http://localhost:5173.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Other scripts:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run build    # type-check and create a production build
+npm run lint     # run ESLint
+npm run preview  # preview the production build
 ```
+
+## Project structure
+
+```
+src/
+  components/   Reusable UI pieces, grouped by page (CRM, eCommerce, logistics)
+  pages/        Route-level pages
+  assets/       Icons and images
+```
+
+## Notes
+
+- All data is hard-coded sample data. The tables and filters work on that data in the browser only.
+
+## Credits
+
+The visual design is based on the Vuexy admin template by Pixinvent. This project is a learning exercise and is not affiliated with or endorsed by them. The code in this repository was written by me.

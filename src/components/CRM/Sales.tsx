@@ -70,11 +70,11 @@ const Sales: React.FC = () => {
       />
     </div>
 
-    <div className="flex justify-center items-center gap-[90px]">
-      <div className=" text-xl font-[500] text-gray-800 dark:text-[#E1DEF5E5]">
+    <div className="flex justify-center items-center gap-2 px-2">
+      <div className="text-lg font-[500] text-gray-800 dark:text-[#E1DEF5E5]">
         175k
       </div>
-      <div className="text-red-500 text-md font-semibold">
+      <div className="text-red-500 text-sm font-semibold">
         -16.2%
       </div>
     </div>

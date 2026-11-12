@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Location from "../Icons/Location";
 import CheckCircle from "../Icons/CheckCircle"
 
@@ -48,12 +48,12 @@ const OrdersByCountries = () => {
         <p className="text-sm sm:text-base font-[400] text-[#2F2B3D8C] dark:text-gray-400">2 deliveries in progress</p>
       </div>
 
-      <div className="flex sm:space-x-8 md:space-x-20 lg:space-x-10 border-b border-gray-200 dark:border-gray-500 text-sm font-medium text-gray-400 mb-3 sm:mb-4 overflow-x-auto">
+      <div className="flex justify-between gap-2 border-b border-gray-200 dark:border-gray-500 text-sm font-medium text-gray-400 mb-3 sm:mb-4 overflow-x-auto">
         {tabs.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`pb-2 sm:pb-3 text-sm sm:text-base  dark:bg-transparent ${
+            className={`shrink-0 px-1 pb-2 sm:pb-3 text-sm dark:bg-transparent ${
               activeTab === tab
                 ? "text-[#7367F0] border-b-2 sm:border-b-3 border-b-[#7367F0] rounded-none "
                 : "rounded-none"

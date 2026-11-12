@@ -1,5 +1,4 @@
 import React from "react";
-import ReactApexChart from "react-apexcharts";
 import ChartComponents from "../ChartComponents";
 import { ApexOptions } from "apexcharts";
 import Clock from "../Icons/Clock";

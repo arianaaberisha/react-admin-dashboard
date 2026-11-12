@@ -18,7 +18,7 @@ interface Project {
   
 }
 
-const projects: Project[] = [
+const initialProjects: Project[] = [
   {
     id: 1,
     name: "#5089",
@@ -400,7 +400,7 @@ const iconStyleMapping: Record<string, { bgColor: string, strokeColor: string }>
 const getIconStyle = (Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> | undefined) => {
   if (!Icon) return { bgColor: "bg-white", strokeColor: "stroke-white" };
   
-  const iconKey = Object.entries(iconMapping).find(([key, component]) => component === Icon)?.[0];
+  const iconKey = Object.entries(iconMapping).find(([, component]) => component === Icon)?.[0];
   
   if (iconKey && iconStyleMapping[iconKey]) {
     return iconStyleMapping[iconKey];
@@ -409,8 +409,8 @@ const getIconStyle = (Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> |
 };
 
 const Invoice: React.FC = () => {
+  const [projects, setProjects] = useState<Project[]>(initialProjects);
   const invoiceOptions = ['6', '10', '25', '50', '100'];
-  const [open, setOpen] = useState(false);
   const [selectedInvoiceOption, setSelectedInvoiceOption] = useState(invoiceOptions[0]);
   const rowsDropdownRef = useRef<HTMLDivElement>(null);
   const [openRowsDropdown, setOpenRowsDropdown] = useState(false);
@@ -494,6 +494,11 @@ const Invoice: React.FC = () => {
     }
   };
 
+  const handleDeleteInvoice = (id: number) => {
+    setProjects(prev => prev.filter(p => p.id !== id));
+    setSelectedProjectIds(prev => prev.filter(item => item !== id));
+  };
+
   const handleCheckboxChange = (id: number, checked: boolean) => {
     if (checked) {
       setSelectedProjectIds(prev => [...prev, id]);
@@ -502,66 +507,6 @@ const Invoice: React.FC = () => {
     }
   };
 
-  const renderPaginationButtons = () => {
-    const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
-    const buttons = [];
-
-    // Show ellipsis if we're not near the start
-    if (currentPage > 2) {
-      buttons.push(
-        <span key="ellipsis1" className="px-2 py-1 text-sm">
-          ...
-        </span>
-      );
-    }
-
-    // Show previous page if not first page
-    if (currentPage > 1) {
-      buttons.push(
-        <button
-          key={currentPage - 1}
-          className="px-2 py-1 text-sm border hover:bg-gray-100 rounded"
-          onClick={() => setCurrentPage(currentPage - 1)}
-        >
-          {currentPage - 1}
-        </button>
-      );
-    }
-
-    // Show current page
-    buttons.push(
-      <button
-        key={currentPage}
-        className="px-2 py-1 text-sm bg-[#7367F0] text-white rounded"
-      >
-        {currentPage}
-      </button>
-    );
-
-    // Show next page if not last page
-    if (currentPage < totalPages) {
-      buttons.push(
-        <button
-          key={currentPage + 1}
-          className="px-2 py-1 text-sm border hover:bg-gray-100 rounded"
-          onClick={() => setCurrentPage(currentPage + 1)}
-        >
-          {currentPage + 1}
-        </button>
-      );
-    }
-
-    // Show ellipsis if we're not near the end
-    if (currentPage < totalPages - 1) {
-      buttons.push(
-        <span key="ellipsis2" className="px-2 py-1 text-sm">
-          ...
-        </span>
-      );
-    }
-
-    return buttons;
-  };
 
   return (
     <div className="flex flex-col p-1">
@@ -573,7 +518,7 @@ const Invoice: React.FC = () => {
               onClick={() => setOpenRowsDropdown(prev => !prev)}
               className="w-30 flex justify-between items-center px-4 py-2  dark:bg-transparent border border-gray-200 dark:border-gray-700 text-[#2F2B3D66] rounded-lg hover:shadow"
             >
-              <span className="text-[15px] font-[400] dark:text-gray-400">{selectedInvoiceOption}</span>
+              <span className="text-[15px] font-[400] text-[#2F2B3DB2] dark:text-gray-300">{selectedInvoiceOption}</span>
               <ChevronDown className="stroke-gray-800 dark:stroke-gray-400"/>
             </button>
             {openRowsDropdown && (
@@ -591,9 +536,6 @@ const Invoice: React.FC = () => {
               </ul>
             )}
           </div>
-          <button className="w-full sm:w-auto h-10 px-4 py-2 bg-[#7367F0] border border-gray-200 dark:border-gray-700 text-white rounded-lg hover:shadow">
-            + Create Invoice
-          </button>
         </div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
           <input
@@ -684,16 +626,13 @@ const Invoice: React.FC = () => {
                   <div className="text-[15px] font-[400] text-[#2F2B3DB2] text-gray-400">{project.date}</div>
                 </td>
                 <td className="py-1.5 px-2 sm:table-cell">
-                  <button className="flex items-center gap-3 text-[#2F2B3DE5] text-lg font-semibold dark:bg-[#2F3349] dark:text-[#ffffff]">
+                  <div className="flex items-center gap-3 text-[#2F2B3DE5] dark:text-[#ffffff]">
+                  <button aria-label={`Delete invoice ${project.name}`} onClick={() => handleDeleteInvoice(project.id)} className="bg-transparent dark:bg-transparent">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                       <path d="M3 6h18M19 6l-1 14H6L5 6h14zM10 11v6M14 11v6" />
                     </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M1 12s3-7 11-7 11 7 11 7-3 7-11 7-11-7-11-7z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                    ⋮
                   </button>
+                  </div>
                 </td>
               </tr>
             ))}

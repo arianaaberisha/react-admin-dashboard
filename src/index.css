@@ -76,3 +76,13 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Keep ApexCharts text readable in dark mode */
+.dark .apexcharts-text,
+.dark .apexcharts-xaxis-label,
+.dark .apexcharts-yaxis-label {
+  fill: #E1DEF5B2 !important;
+}
+.dark .apexcharts-legend-text {
+  color: #E1DEF5B2 !important;
+}

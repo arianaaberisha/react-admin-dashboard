@@ -25,7 +25,7 @@ const LastTransaction: React.FC = () => {
   return (
     <div className="p-6">
       <div className="overflow-x-auto">
-        <table className="min-w-full">
+        <table className="min-w-[520px] w-full">
           <thead>
             <tr className="border-b border-gray-300 dark:border-gray-600">
               <th className="text-left p-3 text-lg font-[500] text-gray-600 dark:text-gray-300" colSpan={4}>

@@ -5,7 +5,7 @@ import { ApexOptions } from "apexcharts";
 const options: ApexOptions = {
     chart: {
       type: 'radialBar',
-      offsetY: -20,
+      offsetY: 0,
       sparkline: {
         enabled: true,
       },
@@ -38,7 +38,7 @@ const options: ApexOptions = {
     },
     grid: {
       padding: {
-        top: -10,
+        top: 0,
       },
     },
     fill: {
@@ -58,7 +58,7 @@ const Expenses:React.FC=()=>{
         <div className="flex flex-col p-6">
             <div className="text-[#2F2B3DE5] text-[18px] font-[500] dark:text-[#E1DEF5E5]">82.5k</div>
             <p className="text-[#2F2B3D8C] text-[15px] font-[400] dark:text-gray-400">Expenses</p>
-            <ReactApexChart options={options} series={series} type="radialBar" height={200} />
+            <ReactApexChart options={options} series={series} type="radialBar" height={170} />
             <div className=" text-[#2F2B3D66] font-[400] text-[13px] dark:text-gray-400 ">$21k Expenses more than last month</div>
         </div>
     )

@@ -31,7 +31,7 @@
     iconBg: string;
   }
   
-  const projects: Project[] = [
+  const initialProjects: Project[] = [
     {
       id: 1,
       name: "Website SEO",
@@ -135,6 +135,7 @@
   ];
   
   const ProjectList: React.FC = () => {
+    const [projects, setProjects] = useState<Project[]>(initialProjects);
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedProjectIds, setSelectedProjectIds] = useState<number[]>([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -145,7 +146,9 @@
       project.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
   
-    const indexOfLastItem = currentPage * itemsPerPage;
+    const totalPages = Math.max(1, Math.ceil(filteredProjects.length / itemsPerPage));
+    const safePage = Math.min(currentPage, totalPages);
+    const indexOfLastItem = safePage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentProjects = filteredProjects.slice(indexOfFirstItem, indexOfLastItem);
   
@@ -158,6 +161,16 @@
       }
     }, [selectedProjectIds, currentProjects]);
   
+    const handleDeleteProject = (id: number) => {
+      setProjects(prev => prev.filter(p => p.id !== id));
+      setSelectedProjectIds(prev => prev.filter(item => item !== id));
+    };
+
+    const handleSearchChange = (value: string) => {
+      setSearchQuery(value);
+      setCurrentPage(1);
+    };
+
     const handleSelectAllChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const currentIds = currentProjects.map(project => project.id);
       if (e.target.checked) {
@@ -187,9 +200,9 @@
           <input
             type="text"
             placeholder="Search Project"
-            className="border rounded-lg px-5 py-2 text-sm"
+            className="border rounded-lg px-5 py-2 text-sm dark:bg-transparent dark:border-gray-600 dark:text-[#E1DEF5E5] dark:placeholder:text-gray-400"
             value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
+            onChange={e => handleSearchChange(e.target.value)}
           />
         </div>
   
@@ -250,11 +263,11 @@
                           key={index}
                           src={imgSrc}
                           alt={`Team member ${index + 1}`}
-                          className="w-8 h-8 rounded-full object-cover border-2 border-white"
+                          className="w-8 h-8 rounded-full object-cover border-2 border-white dark:border-[#2F3349]"
                         />
                       ))}
                       {project.teamMembers.length > 3 && (
-                        <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center border-2 border-white text-xs">
+                        <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center border-2 border-white text-xs dark:bg-gray-600 dark:text-white dark:border-[#2F3349]">
                           +{project.teamMembers.length - 3}
                         </div>
                       )}
@@ -272,41 +285,55 @@
                     </div>
                   </td>
                   <td className="py-1.5 px-2 hidden md:table-cell">
-                    <button className="text-[#2F2B3DE5] text-lg font-semibold dark:bg-[#2F3349] dark:text-[#ffffff]">
-                      ⋮
+                    <button
+                      aria-label={`Delete ${project.name}`}
+                      title="Delete"
+                      onClick={() => handleDeleteProject(project.id)}
+                      className="bg-transparent border-none p-1 text-[#2F2B3DE5] dark:bg-transparent dark:text-[#ffffff]"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 6h18M19 6l-1 14H6L5 6h14zM10 11v6M14 11v6" />
+                      </svg>
                     </button>
                   </td>
                 </tr>
               ))}
+              {currentProjects.length === 0 && (
+                <tr>
+                  <td colSpan={6} className="text-center py-6 text-sm text-gray-500">
+                    No projects found.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
   
         <div className="flex justify-between items-center px-4 py-2 border-t">
           <div className="text-xs text-gray-500">
-            Showing {indexOfFirstItem + 1} to{" "}
-            {Math.min(indexOfLastItem, projects.length)} of {projects.length} entries
+            Showing {filteredProjects.length === 0 ? 0 : indexOfFirstItem + 1} to{" "}
+            {Math.min(indexOfLastItem, filteredProjects.length)} of {filteredProjects.length} entries
           </div>
           <div className="flex gap-1">
             <button
-              className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100 dark:bg-transparent dark:text-[#E1DEF5E5] dark:border-gray-600 dark:hover:bg-white/10"
               onClick={() => setCurrentPage(1)}
             >
               «
             </button>
             <button
-              className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100 dark:bg-transparent dark:text-[#E1DEF5E5] dark:border-gray-600 dark:hover:bg-white/10"
+              onClick={() => setCurrentPage(Math.max(1, safePage - 1))}
             >
               ‹
             </button>
-            {[1, 2].map((page) => (
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
                 className={`px-2 py-1 text-sm ${
-                  currentPage === page
+                  safePage === page
                     ? "bg-[#7367F0] text-white"
-                    : "border hover:bg-gray-100"
+                    : "border hover:bg-gray-100 dark:bg-transparent dark:text-[#E1DEF5E5] dark:border-gray-600 dark:hover:bg-white/10"
                 } rounded`}
                 onClick={() => setCurrentPage(page)}
               >
@@ -314,14 +341,14 @@
               </button>
             ))}
             <button
-              className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
-              onClick={() => setCurrentPage((p) => Math.min(2, p + 1))}
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100 dark:bg-transparent dark:text-[#E1DEF5E5] dark:border-gray-600 dark:hover:bg-white/10"
+              onClick={() => setCurrentPage(Math.min(totalPages, safePage + 1))}
             >
               ›
             </button>
             <button
-              className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
-              onClick={() => setCurrentPage(2)}
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100 dark:bg-transparent dark:text-[#E1DEF5E5] dark:border-gray-600 dark:hover:bg-white/10"
+              onClick={() => setCurrentPage(totalPages)}
             >
               »
             </button>

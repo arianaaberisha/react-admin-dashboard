@@ -88,7 +88,7 @@ const Transactions: React.FC = () => {
       </div>
       <div className="space-y-2 sm:space-y-1 ">
         {transactions.map(
-          ({ Icon, label, subLabel, value, iconBg, iconColor }) => {
+          ({ Icon, label, subLabel, value, iconBg, iconColor }, index) => {
             const valueColorClass = value.startsWith("-")
               ? "text-red-500"
               : value.startsWith("+")
@@ -97,7 +97,7 @@ const Transactions: React.FC = () => {
 
             return (
               <CardComponent
-                key={label}
+                key={`${label}-${index}`}
                 Icon={Icon}
                 label={label}
                 subLabel={subLabel}

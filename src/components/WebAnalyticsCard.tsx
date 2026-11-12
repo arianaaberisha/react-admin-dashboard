@@ -7,7 +7,7 @@ import CardAnalytics3 from "../assets/icons/card-website-analytics-3.png";
 export const ViewOne = () => {
   return (
     <div className="relative flex flex-col md:flex-row md:items-start p-6">
-      <div className="md:flex-1 ">
+      <div className="md:flex-1 md:pr-[120px]">
         <div className="flex justify-between items-center mb-4">
           <div>
             <h2 className="text-2xl text-white font-medium">
@@ -22,7 +22,7 @@ export const ViewOne = () => {
           <p className="text-xl text-white">Traffic</p>
           <br />
           <div className="flex flex-col gap-4 text-white">
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <span className="flex items-center gap-2">
                 <span className="bg-[#6258CC] p-2 rounded-md shadow-md">
                   28%
@@ -36,7 +36,7 @@ export const ViewOne = () => {
                 Page Views
               </span>
             </div>
-            <div className="flex gap-9">
+            <div className="flex flex-wrap gap-4">
               <span className="flex items-center gap-2">
                 <span className="bg-[#6258CC] p-2 rounded-md shadow-md">
                   1.2k
@@ -55,7 +55,7 @@ export const ViewOne = () => {
       </div>
       <div className="mt-4 md:mt-0 md:absolute md:top-[25%] md:right-[15%] 
 lg:mt-0 lg:absolute lg:top-[20%] lg:right-[5%] ">
-        <img src={CardAnalytics1} alt="Analytics Card 1" width={200} height={150} />
+        <img src={CardAnalytics1} alt="Analytics Card 1" width={115} />
       </div>
     </div>
   );
@@ -64,7 +64,7 @@ lg:mt-0 lg:absolute lg:top-[20%] lg:right-[5%] ">
 export const ViewTwo = () => {
   return (
     <div className="relative flex flex-col md:flex-row md:items-start p-6">
-      <div className="md:flex-1">
+      <div className="md:flex-1 md:pr-[120px]">
         <div className="mb-4">
           <h2 className="text-2xl text-white font-sans font-[500]">
             Website Analytics
@@ -75,7 +75,7 @@ export const ViewTwo = () => {
           <p className="text-xl text-white font-sans font-[400]">Spending</p>
           <br />
           <div className="flex flex-col gap-4 text-white">
-            <div className="flex gap-8">
+            <div className="flex flex-wrap gap-4">
               <span className="flex items-center gap-2">
                 <span className="bg-[#6258CC] p-2 rounded-md shadow-md">
                   12h
@@ -89,7 +89,7 @@ export const ViewTwo = () => {
                 Order Size
               </span>
             </div>
-            <div className="flex gap-9">
+            <div className="flex flex-wrap gap-4">
               <span className="flex items-center gap-2">
                 <span className="bg-[#6258CC] p-2 rounded-md shadow-md">
                   127
@@ -107,7 +107,7 @@ export const ViewTwo = () => {
         </div>
       </div>
       <div className="mt-4 md:mt-0 md:absolute md:top-[30%] md:right-[15%] lg:mt-0 lg:absolute lg:top-[20%] lg:right-[5%]">
-        <img src={CardAnalytics2} alt="Analytics Card 2" width={200} height={150} />
+        <img src={CardAnalytics2} alt="Analytics Card 2" width={115} />
       </div>
     </div>
   );
@@ -116,7 +116,7 @@ export const ViewTwo = () => {
 export const ViewThree = () => {
   return (
     <div className="relative flex flex-col md:flex-row md:items-start p-6">
-      <div className="md:flex-1">
+      <div className="md:flex-1 md:pr-[120px]">
         <div className="mb-4">
           <h2 className="text-2xl text-white font-sans font-[500]">
             Website Analytics
@@ -129,7 +129,7 @@ export const ViewThree = () => {
           </p>
           <br />
           <div className="flex flex-col gap-4 text-white">
-            <div className="flex gap-8">
+            <div className="flex flex-wrap gap-4">
               <span className="flex items-center gap-2">
                 <span className="bg-[#6258CC] p-2 rounded-md shadow-md">
                   268
@@ -143,7 +143,7 @@ export const ViewThree = () => {
                 Organic
               </span>
             </div>
-            <div className="flex gap-7">
+            <div className="flex flex-wrap gap-4">
               <span className="flex items-center gap-2">
                 <span className="bg-[#6258CC] p-2 rounded-md shadow-md">
                   62
@@ -161,13 +161,13 @@ export const ViewThree = () => {
         </div>
       </div>
       <div className="mt-4 md:mt-0 md:absolute md:top-[30%] md:right-[15%] lg:mt-0 lg:absolute lg:top-[20%] lg:right-[5%]">
-        <img src={CardAnalytics3} alt="Analytics Card 3" width={200} height={150} />
+        <img src={CardAnalytics3} alt="Analytics Card 3" width={115} />
       </div>
     </div>
   );
 };
 
-type WebAnalyticsCardProps = {};
+type WebAnalyticsCardProps = Record<string, never>;
 
 const WebAnalyticsCard: React.FC<WebAnalyticsCardProps> = () => {
   const [activeView, setActiveView] = useState(0);

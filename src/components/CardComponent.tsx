@@ -1,6 +1,4 @@
 import React from "react";
-import ChevronUp from "../assets/icons/ChevronUp.svg";
-import ChevronDown from "../assets/icons/ChevronDown2.svg";
 
 type CardComponentProps = {
     Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -29,8 +27,6 @@ const CardComponent: React.FC<CardComponentProps> = ({
     title,
     label,
     subLabel,
-    description,
-    time,
     value,
     alt,
     trendIcon,
@@ -43,7 +39,6 @@ const CardComponent: React.FC<CardComponentProps> = ({
     percentageBg,
 }) => {
 
-    const trendIconToShow = trendIcon || (isPositive ? ChevronUp : ChevronDown);
     const percentageColorToShow =
         percentageColor || (isPositive ? "text-green-500" : "text-red-500");
 

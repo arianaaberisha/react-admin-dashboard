@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ApexCharts from 'react-apexcharts';
-import ReactApexChart from 'react-apexcharts';
 
 const RevenueReports: React.FC = () => {
   const [chartHeight, setChartHeight] = useState(350);
@@ -58,7 +57,7 @@ const RevenueReports: React.FC = () => {
     stroke: { show: false },
     xaxis: {
       categories: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'],
-      labels: { show: true },
+      labels: { show: true, rotate: 0, style: { fontSize: '10px' } },
       axisTicks: { show: false },
       axisBorder: { show: false },
     },
@@ -181,7 +180,6 @@ const RevenueReports: React.FC = () => {
           <div className="w-full h-[80px] sm:h-[100px]">
             <ApexCharts options={options} series={series} type="line" height="100%" width="100%" />
           </div>
-          <button className='bg-[#7367F0] text-white font-medium text-sm sm:text-base mt-2 sm:mt-4 px-3 py-1 sm:px-4 sm:py-2 rounded'>Increase Budget</button>
         </div>
       </div> 
     </div>

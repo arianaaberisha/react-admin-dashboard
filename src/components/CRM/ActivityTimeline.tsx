@@ -32,11 +32,11 @@ const timelineData: TimelineItem[] = [
     time: "45 min ago",
     type: "meeting",
     clientName: "Lester McCarthy(Client)",
-    clientTitle: "CEO of Pixinvent",
+    clientTitle: "CEO of Acme Inc",
     extraContent: (
       <div className="mt-1 flex items-center gap-1 text-[13px] font-[400] text-[#2F2B3DB2] dark:text-gray-400">
         <img src={Member} className="w-10 h-10 rounded-full" alt="client" />
-        <span>{"CEO of Pixinvent"}</span>
+        <span>{"CEO of Acme Inc"}</span>
       </div>
     ),
   },
@@ -75,7 +75,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({ item }) => (
       {item.file && (
         <div className="mt-2 inline-flex items-center font-medium text-[#2F2B3DB2] dark:text-gray-400 \
            dark:bg-gray-700 bg-[#2F2B3D0F] \
-          px-2 py-1 rounded text-[15px] gap-1 cursor-pointer">
+          px-2 py-1 rounded text-[15px] gap-1">
           <img src={Invoice} className="w-5 h-5" alt="file icon" />
           {item.file}
         </div>

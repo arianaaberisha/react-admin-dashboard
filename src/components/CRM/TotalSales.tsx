@@ -1,5 +1,4 @@
 import React from "react";
-import CreditCard from '../Icons/DollarSymbol'
 import DollarSymbol from "../Icons/DollarSymbol";
 
 const TotalSales:React.FC=()=>{

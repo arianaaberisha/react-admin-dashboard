@@ -25,7 +25,7 @@ const EarningReportsCard: React.FC = () => {
   const highlightIndex = dataMap[active].indexOf(
     Math.max(...dataMap[active])
   );
-  const barColors = dataMap[active].map((value, idx) =>
+  const barColors = dataMap[active].map((_value, idx) =>
     idx === highlightIndex ? "#7367F0" : "#7367F029"
   );
 
@@ -98,9 +98,6 @@ const EarningReportsCard: React.FC = () => {
             </button>
           );
         })}
-        <button className="h-[100px] w-[110px] rounded-md border-dashed border-gray-300 dark:border-gray-600 text-gray-400 flex dark:bg-transparent items-center justify-center">
-          +
-        </button>
       </div>
 
       <div className="w-full h-[230px]">

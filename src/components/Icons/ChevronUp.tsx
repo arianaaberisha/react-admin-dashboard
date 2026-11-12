@@ -5,7 +5,7 @@ const ChevronUp:React.FC<React.SVGProps<SVGSVGElement>>=(props)=>(
     width="24"  
     height="24"  
     viewBox="0 0 24 24"  
-    fill="none"  stroke="currentColor"  strokeWidth="2"  stroke-linecap="round"  
+    fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  
     strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up"
     {...props}><path stroke="none"
      d="M0 0h24v24H0z" fill="none"/><path d="M6 15l6 -6l6 6" /></svg>

@@ -72,7 +72,7 @@ const RevenueGrowth: React.FC = () => {
             </div>
         </div>
          </div>
-         <div className=" relative w-[200px] ml-[140px] mt-[-110px] flex flex-col md:flex-row items-start md:items-center justify-between md:space-x-4">
+         <div className=" relative w-[200px] ml-[100px] sm:ml-[140px] mt-[-110px] flex flex-col md:flex-row items-start md:items-center justify-between md:space-x-4">
         <div className=" md:mt-0 w-full md:w-[350px] p-5 h-[70px] flex justify-center items-center self-center md:self-auto">
           <ChartComponents
             type="bar"

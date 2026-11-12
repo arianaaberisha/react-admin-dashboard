@@ -27,15 +27,15 @@ const ActiveProject: React.FC = () => {
         {projects.map((project, index) => (
           <div key={index} className="flex flex-col space-y-2 py-2">
             <div className="flex items-center justify-between">
-              <div className="flex items-center">
+              <div className="flex items-center min-w-0">
                 {project.icon}
                 <div className="flex flex-col">
                   <p className="text-md text-[#2F2B3DE5] font-semibold dark:text-[#E1DEF5E5]">{project.name}</p>
                   <p className="text-sm text-[#2F2B3DB2] dark:text-gray-400">{project.category}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 justify-end w-50">
-                <div className="w-40 bg-gray-200 dark:bg-gray-700 rounded h-2">
+              <div className="flex items-center gap-2 justify-end shrink-0 w-28">
+                <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded h-2">
                   <div
                     className={`h-2 rounded ${project.color}`}
                     style={{ width: `${project.progress}%` }}

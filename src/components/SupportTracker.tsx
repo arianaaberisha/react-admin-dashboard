@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ApexOptions } from "apexcharts";
 import ChartComponents from "./ChartComponents";
 import Check from "../assets/icons/Check.svg";
@@ -6,6 +6,13 @@ import Ticket from "../assets/icons/ticket.svg";
 import Clock2 from "../assets/icons/Clock2.svg";
 
 const SupportTracker: React.FC = () => {
+  const [isMd, setIsMd] = useState(() => window.matchMedia("(min-width: 768px)").matches);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = (e: MediaQueryListEvent) => setIsMd(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
   const area3options: ApexOptions = {
     chart: {
       type: "radialBar",
@@ -24,14 +31,14 @@ const SupportTracker: React.FC = () => {
         dataLabels: {
           name: {
             show: true,
-            color: "#00000",
+            color: "#808390",
             fontSize: "14px",
             offsetY: -20,
           },
           value: {
             offsetY: 10,
             fontSize: "36px",
-            color: "#00000",
+            color: "#808390",
             formatter: function (val: number) {
               return val.toFixed(0) + "%";
             },
@@ -77,7 +84,8 @@ const SupportTracker: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex justify-center md:hidden ">
+        {!isMd && (
+        <div className="flex justify-center">
           <div className="w-[290px] h-[250px]">
             <ChartComponents
               type="radialBar"
@@ -91,6 +99,7 @@ const SupportTracker: React.FC = () => {
             />
           </div>
         </div>
+        )}
 
         <div className="grid grid-cols-1 sm:flex sm:flex-col sm:justify-start md:flex md:flex-col md:space-y-4 gap-2 ">
           <div className="flex items-center">
@@ -141,7 +150,8 @@ const SupportTracker: React.FC = () => {
         </div>
       </div>
 
-      <div className="hidden md:flex justify-center items-center w-1/2 h-3/2">
+      {isMd && (
+      <div className="flex justify-center items-center w-1/2 h-3/2">
         <div>
           <ChartComponents
             type="radialBar"
@@ -155,6 +165,7 @@ const SupportTracker: React.FC = () => {
           />
         </div>
       </div>
+      )}
     </div>
   );
 };

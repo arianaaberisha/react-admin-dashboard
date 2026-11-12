@@ -44,12 +44,12 @@ const CrmBody: React.FC = () => {
       </div>
       <div className="grid grid-cols-12 gap-4 ">
             <div className="col-span-12 lg:col-span-8 relative dark:bg-[#2F3349]">
-              <CrmCard className="h-[500px]">
+              <CrmCard className="h-full min-h-[500px]">
                 <EarningReports />
               </CrmCard>
             </div>
             <div className="col-span-12 lg:col-span-4 relative dark:bg-[#2F3349]">
-              <CrmCard className="h-[500px]">
+              <CrmCard className="h-full min-h-[500px]">
                 <MonthSales />
               </CrmCard>
             </div>
@@ -57,29 +57,29 @@ const CrmBody: React.FC = () => {
 
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-12 lg:col-span-4 dark:bg-[#2F3349]">
-              <CrmCard className=" p-6 h-[500px]">
+              <CrmCard className=" p-6 h-full min-h-[500px]">
                 <SalesByCountries />
               </CrmCard>
             </div>
             <div className="col-span-12 lg:col-span-4 dark:bg-[#2F3349]">
-              <CrmCard className="h-[500px]">
+              <CrmCard className="h-full min-h-[500px]">
             <ProjectStatus />
               </CrmCard>
             </div>
             <div className="col-span-12 lg:col-span-4 dark:bg-[#2F3349]">
-              <CrmCard className="h-[500px]">
+              <CrmCard className="h-full min-h-[500px]">
                 <ActiveProject />
               </CrmCard>
             </div>
           </div>
           <div className="grid grid-cols-12 gap-4 ">
             <div className="col-span-12 lg:col-span-6 relative dark:bg-[#2F3349]">
-              <CrmCard className="h-[500px]">
+              <CrmCard className="h-full min-h-[500px]">
                 <LastTransaction />
               </CrmCard>
             </div>
             <div className="col-span-12 lg:col-span-6 relative dark:bg-[#2F3349]">
-              <CrmCard className="h-[500px]">
+              <CrmCard className="h-full min-h-[500px]">
                 <ActivityTimeline />
               </CrmCard>
             </div>
